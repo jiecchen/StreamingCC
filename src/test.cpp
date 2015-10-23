@@ -1,10 +1,10 @@
 #include <vector>
 #include <iostream>
-#include "../include/CountMin.h"
+#include "../include/CountMin.hpp"
 
 
 void test_CountMin() {
-  CountMin cm(100, 10);
+  CountMin<int> cm(100, 10);
   int data[] = {1,1,1,0,0,0,1,1,2,1,2,3,4,5,5,5,5,5,5,5,5,5,5};
   for (int i = 0; i < 15; ++i) 
     cm.processItem(data[i]);
