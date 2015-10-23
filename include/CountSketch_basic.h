@@ -1,5 +1,5 @@
-#ifndef __COUNT_MIN_BASIC_H__
-#define __COUNT_MIN_BASIC_H__
+#ifndef __COUNT_SKETCH_BASIC_H__
+#define __COUNT_SKETCH_BASIC_H__
 #include <vector>
 #include "config.h"
 #include "Sketch.h"
@@ -8,15 +8,16 @@
 typedef std::vector<ItemType> Buffer;
 
 
-//! CountMin_basic only process ItemType (aka int) stream, weight must be non-negative
-class CountMin_basic: public Sketch<ItemType> {
+//! CountSketch_basic only process ItemType (aka int) stream, weight can be negative
+class CountSketch_basic: public Sketch<ItemType> {
 private:
   int m; // size of each buffer
   int d; // # of copies of buffer
   std::vector<Buffer> d_buf; // to keep d buffers
   std::vector<int> seeds;
+  std::vector<int> sign_seeds; // seeds to generate random sign
 public:
-  CountMin_basic(int _m, //!< size of buffer 
+  CountSketch_basic(int _m, //!< size of buffer 
 		 int _d=20 //!< number of buffers
 		 );
   //! process a given (weighted) item
@@ -26,3 +27,12 @@ public:
 };
 
 #endif
+
+
+
+
+
+
+
+
+
