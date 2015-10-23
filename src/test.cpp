@@ -1,15 +1,18 @@
 #include <vector>
 #include <iostream>
+#include "../include/Hash.h"
 #include "../include/CountMin.hpp"
 
 
+
+
 void test_CountMin() {
-  CountMin<int> cm(100, 10);
-  int data[] = {1,1,1,0,0,0,1,1,2,1,2,3,4,5,5,5,5,5,5,5,5,5,5};
-  for (int i = 0; i < 15; ++i) 
+  CountMin<char> cm(100, 10);
+  char data[] = "11111111112345111111";
+  for (int i = 0; i < 20; ++i) 
     cm.processItem(data[i]);
   
-  for (int i = 0; i < 6; ++i)
+  for (char i = '0'; i < '6' ; ++i)
     std::cout << i << ": " << cm.estTotWeight(i) << std::endl;
 }
 

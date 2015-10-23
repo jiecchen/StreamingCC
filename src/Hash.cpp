@@ -6,23 +6,12 @@
  * modified by Jiecao Chen <chenjiecao@gmail.com>
  */
 
-#ifndef MURMURHASH_H
-#define MURMURHASH_H 
 
-#include <stdint.h>
 #include <cstdlib>
-#include "config.h"
+#include "../include/Hash.h"
 
-#define MURMURHASH_VERSION "0.0.3"
-
-
-
-/**
- * Returns a murmur hash of `key' based on `seed'
- * using the MurmurHash3 algorithm
- */
-template <typename T>
-uint32_t murmurhash (const T *key, uint32_t seed=112131, uint32_t len=sizeof(T)) {
+uint32_t murmurhash(const int *key, uint32_t seed) {
+  uint32_t len = sizeof(int);
   uint32_t c1 = 0xcc9e2d51;
   uint32_t c2 = 0x1b873593;
   uint32_t r1 = 15;
@@ -83,18 +72,3 @@ uint32_t murmurhash (const T *key, uint32_t seed=112131, uint32_t len=sizeof(T))
 
   return h;
 }
-
-
-
-
-#endif
-
-
-
-
-
-
-
-
-
-

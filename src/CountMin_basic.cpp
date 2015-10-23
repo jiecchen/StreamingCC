@@ -1,5 +1,5 @@
 #include "../include/CountMin_basic.h"
-#include "../include/Hash.hpp"
+#include "../include/Hash.h"
 #include <vector>
 #include <cstdlib>
 #include <ctime>

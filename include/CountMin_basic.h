@@ -2,14 +2,14 @@
 #define __COUNT_MIN_BASIC_H__
 #include <vector>
 #include "config.h"
-
+#include "Sketch.h"
 
 
 typedef std::vector<ItemType> Buffer;
 
 
 //! CountMin_basic only process ItemType (aka int) stream
-class CountMin_basic {
+class CountMin_basic: public Sketch<ItemType> {
 private:
   int m; // size of each buffer
   int d; // # of copies of buffer
@@ -17,7 +17,7 @@ private:
   std::vector<int> seeds;
 public:
   CountMin_basic(int _m, //!< size of buffer 
-		 int _d=20 //!< # of buffers
+		 int _d=20 //!< number of buffers
 		 );
   //! process a given (weighted) item
   void processItem(const ItemType &item, double weight=1);

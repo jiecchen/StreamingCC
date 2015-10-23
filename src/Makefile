@@ -1,7 +1,7 @@
 CC=g++
-CFLAGS=-c -Wall
+CFLAGS=-c -Wall -std=c++11
 LDFLAGS=
-SOURCES=test.cpp CountMin_basic.cpp
+SOURCES=test.cpp CountMin_basic.cpp Hash.cpp
 OBJECTS=$(SOURCES:.cpp=.o)
 EXECUTABLE=test
 RM=rm -rf 
