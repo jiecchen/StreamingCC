@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='utf-8'?>
+<index xmlns="http://jessevdk.github.com/cldoc/1.0">
+  <class name="CountMin" ref="CountMin#CountMin" />
+  <class name="Sketch" ref="Sketch#Sketch">
+    <brief> Abstract Class for Sketch</brief>
+  </class>
+  <typedef id="Buffer" name="Buffer">
+    <type name="std::vector&lt;int, std::allocator&lt;int&gt; &gt;" />
+  </typedef>
+  <typedef id="ItemType" name="ItemType">
+    <type builtin="yes" name="int" />
+  </typedef>
+  <function id="murmurhash" name="murmurhash">
+    <brief>*</brief>
+    <doc>Returns a murmur hash of `key' based on `seed'
+using the MurmurHash3 algorithm
+</doc>
+    <return>
+      <type name="uint32_t" />
+    </return>
+    <argument id="murmurhash::key" name="key">
+      <type name="ItemType" qualifier=" const *" ref="index#ItemType" />
+    </argument>
+    <argument id="murmurhash::seed" name="seed">
+      <type name="uint32_t" />
+    </argument>
+    <argument id="murmurhash::len" name="len">
+      <type name="uint32_t" />
+    </argument>
+  </function>
+</index>
