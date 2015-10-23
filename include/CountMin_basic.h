@@ -1,3 +1,5 @@
+/* Copyright (C) 2015 by Jiecao Chen (chenjiecao@gmail.com) */
+
 #ifndef __COUNT_MIN_BASIC_H__
 #define __COUNT_MIN_BASIC_H__
 #include <vector>

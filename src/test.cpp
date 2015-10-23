@@ -2,11 +2,17 @@
 #include <iostream>
 #include "../include/Hash.h"
 #include "../include/CountMin.hpp"
+#include "../include/Sampling.hpp"
 #include <random>
 #include <map>
 
 std::mt19937 gen;
 
+template <typename T>
+void print_vector(std::vector<T> vec) {
+  for (auto v: vec)
+    std::cout << v << std::endl;
+}
 
 void test_CountMin() {
   CountMin<char> cm(20, 5);
@@ -42,11 +48,20 @@ void test_CountSketch() {
 } 
 
 
+void test_Sampling() {
+  // std::discrete_distribution<int> dist {100, 5, 5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
+  UniformSampling<int> usp(10, true);
+  for (int i = 0; i < 100; i++)
+    usp.processItem(i);
+  print_vector(usp.getSamples());
+}
+
 
 int main() {
-  test_CountMin();
-  std::cout << "----------------------------------" << std::endl;
-  test_CountSketch();
+  // test_CountMin();
+  // std::cout << "----------------------------------" << std::endl;
+  //  test_CountSketch();
+  test_Sampling();
   return 0;
 }
 

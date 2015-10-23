@@ -1,3 +1,5 @@
+// Copyright (C) 2015 by Jiecao Chen (chenjiecao@gmail.com)
+
 #include "../include/CountSketch_basic.h"
 #include "../include/Hash.h"
 #include <vector>
