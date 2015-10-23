@@ -1,5 +1,5 @@
-#ifndef __UTILS_H__
-#define __UTILS_H__
+#ifndef __UTILS_HPP__
+#define __UTILS_HPP__
 #include <random>
 #include <iostream>
 
@@ -10,23 +10,10 @@ namespace utils {
   std::mt19937 gen(rd());
   std::uniform_real_distribution<> dis(0, 1);
   std::default_random_engine generator;
-  std::normal_distribution<double> distribution(5.0,2.0);
   std::uniform_int_distribution<> dis_int(0, MAX);
 }
 
 
-
-class Gaussian {
-  std::normal_distribution<double> *distPtr;
-public:
-  Gaussian(double m, double sig) {
-    distPtr = new std::normal_distribution<double>(m, sig);
-  };
-  double rand() {
-    return (*distPtr)(utils::gen);
-  };
-  ~Gaussian() {delete distPtr; }
-};
 
 //! return random double between 0. and 1.
 double rand_double() {

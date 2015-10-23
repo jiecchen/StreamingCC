@@ -4,7 +4,7 @@
 #define  __SAMPLING_HPP__
 #include "Sketch.h"
 #include <vector>
-#include "utils.h"
+#include "utils.hpp"
 #include <cmath>
 
 template <typename T>
@@ -19,7 +19,7 @@ public:
 /*!
  * - For sampling with replacement, both weighted an unweighted
  *   data streams are supported.
- * - For sampling without replace, currently only support unweighted
+ * - For sampling without replacement, currently only support unweighted
  *   data stream.
  */
 
