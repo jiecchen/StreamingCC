@@ -23,7 +23,7 @@ public:
 
   //! @return estimation of total weight of the given item
   double estTotWeight(const T &item) {
-    // convert item to ItemType using murmurhash
+    // convert item to ItemType using hash_fn
     std::cerr << item << " -> " << hash_fn(item) << std::endl;
     return cmb.estTotWeight(hash_fn(item));
   }
