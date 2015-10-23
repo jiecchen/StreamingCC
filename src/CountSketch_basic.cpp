@@ -36,7 +36,9 @@ double CountSketch_basic::estTotWeight(const ItemType &item) {
     int sign = murmurhash(&item, sign_seeds[i]) % 2;
     values[i] = (sign * 2 - 1) * d_buf[i][p];
   }
-  return *std::min_element(values, values + d);
+  // return the median
+  std::nth_element(values, values + d / 2, values + d);
+  return values[d / 2];
 }
 
 
