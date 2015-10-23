@@ -15,13 +15,16 @@ public:
 }; 
 
 
-//! Uniform sampling over a data stream
+//! Sampling over a data stream via Reservoir Sampling
 /*!
- * Internally, it's using the notable `reservoir sampling`
- * algorithm. Sampling can be done with or without replacement.
+ * - For sampling with replacement, both weighted an unweighted
+ *   data streams are supported.
+ * - For sampling without replace, currently only support unweighted
+ *   data stream.
  */
+
 template <typename T>
-class UniformSampling: public Sampling<T> {
+class ReservoirSampling: public Sampling<T> {
 private:
   std::vector<T> samples;
   int nSamples;
@@ -55,7 +58,7 @@ private:
   };
 
 public:
-  UniformSampling(int _nSamples, //!< number of samples wanted
+  ReservoirSampling(int _nSamples, //!< number of samples wanted
 		  bool _withRpl=true  //!< whether sampling with replacement	 
 		  ): 
     nSamples(_nSamples), withReplacementQ(_withRpl), totWeight(0.) {};

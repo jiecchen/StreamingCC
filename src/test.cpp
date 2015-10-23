@@ -50,7 +50,7 @@ void test_CountSketch() {
 
 void test_Sampling() {
   // std::discrete_distribution<int> dist {100, 5, 5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
-  UniformSampling<int> usp(10, true);
+  ReservoirSampling<int> usp(10, true);
   for (int i = 0; i < 100; i++)
     usp.processItem(i);
   print_vector(usp.getSamples());
