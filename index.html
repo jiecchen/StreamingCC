@@ -85,12 +85,12 @@
 <h3>
 <a id="step-two" class="anchor" href="#step-two" aria-hidden="true"><span class="octicon octicon-link"></span></a>Step Two</h3>
 
-<p>Enter StreamingCC/build, and run</p>
+<p>Enter <code>StreamingCC/build</code>, and run</p>
 
 <pre><code>$ cmake ..
 </code></pre>
 
-<p>Which generates a <code>Makefile</code> in current dir.</p>
+<p>Which generates a <code>Makefile</code> in current directory.</p>
 
 <h3>
 <a id="step-three" class="anchor" href="#step-three" aria-hidden="true"><span class="octicon octicon-link"></span></a>Step Three</h3>
@@ -100,7 +100,7 @@
 <pre><code>$ make
 </code></pre>
 
-<p>If you want to make the library aware by system-wide, run the following</p>
+<p>If you want to install it as system-wide library, run the following</p>
 
 <pre><code>$ sudo make install
 </code></pre>
@@ -110,7 +110,7 @@
 <h2>
 <a id="a-example" class="anchor" href="#a-example" aria-hidden="true"><span class="octicon octicon-link"></span></a>A Example</h2>
 
-<p>Assume you have install the library system-wide, and you have a file <code>test.cpp</code> with following content,</p>
+<p>Assume you have run <code>sudo make install</code>, and you have a file <code>test.cpp</code> with following content,</p>
 
 <div class="highlight highlight-source-c++"><pre>
 #<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>streamcc/Sampling.hpp<span class="pl-pds">&gt;</span></span>
@@ -120,7 +120,7 @@
     <span class="pl-c">// create an object which will maintain</span>
     <span class="pl-c">// 10 samples (with replacement) dynamically</span>
     ReservoirSampling&lt;<span class="pl-k">int</span>&gt; <span class="pl-c1">rsmp</span>(<span class="pl-c1">10</span>);
-    <span class="pl-c">// sample from a data stream with length 1000,000</span>
+    <span class="pl-c">// sample from a data stream with length 1,000,000</span>
     <span class="pl-k">for</span> (<span class="pl-k">int</span> i = <span class="pl-c1">0</span>; i &lt; <span class="pl-c1">1000000</span>; i++)
         rsmp.<span class="pl-c1">processItem</span>(i);
 
