@@ -20,10 +20,11 @@ include_directories(include)
 
 #However, the file(GLOB...) allows for wildcard additions:
 file(GLOB SOURCES "src/*.cpp")
-
+file(GLOB INCLUDES "include/*.h" "include/*.hpp")
 #Generate the shared library from the sources
 add_library(streamcc STATIC ${SOURCES})
 
 #Set the location for library installation -- i.e., /usr/lib in this case
 # not really necessary in this example. Use "sudo make install" to apply
 install(TARGETS streamcc DESTINATION /usr/lib)
+install(FILES ${INCLUDES} DESTINATION /usr/local/include)
