@@ -34,12 +34,120 @@
         <h2>
 <a id="streamingcc" class="anchor" href="#streamingcc" aria-hidden="true"><span class="octicon octicon-link"></span></a>StreamingCC</h2>
 
-<p>A C++ library for summarizing data streams</p>
+<p>A (pure) C++ library for summarizing data streams.</p>
 
 <h2>
-<a id="documentation" class="anchor" href="#documentation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Documentation</h2>
+<a id="algorithms" class="anchor" href="#algorithms" aria-hidden="true"><span class="octicon octicon-link"></span></a>Algorithms</h2>
 
-<p><a href="http://xmerge.me/StreamingCC/">docs</a></p>
+<p><code>StreamingCC</code> implements various <a href="https://en.wikipedia.org/wiki/Streaming_algorithm">streaming algorithms</a> and <a href="https://en.wikipedia.org/wiki/Category:Probabilistic_data_structures">probabilistic data structures</a>. They can be used to effectively summarize the data stream even when data is too large to fit into memory.</p>
+
+<p>Algorithms/Data Structures included in <code>StreamingCC</code>:</p>
+
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Count%E2%80%93min_sketch">Count-Min Sketch</a></li>
+<li><a href="https://www.cs.rutgers.edu/%7Efarach/pubs/FrequentStream.pdf">Count-Sketch</a></li>
+<li><a href="https://polylogblog.wordpress.com/2009/09/27/bite-sized-stream-ams-sketching/">AMS Sketch</a></li>
+<li>
+<a href="http://www.cs.dartmouth.edu/%7Eac/Teach/CS49-Fall11/Notes/lecnotes.pdf">Distinct Elements Counter</a>(section 3)</li>
+<li><a href="https://en.wikipedia.org/wiki/Reservoir_sampling">Reservoir sampling</a></li>
+<li><a href="http://las.ethz.ch/files/badanidiyuru14streaming.pdf">Streaming Submodular Maximization</a></li>
+<li>
+<a href="https://en.wikipedia.org/wiki/Bloom_filter">Bloom Filter</a> and its variants</li>
+<li>...</li>
+</ul>
+
+<h2>
+<a id="apis" class="anchor" href="#apis" aria-hidden="true"><span class="octicon octicon-link"></span></a>APIs</h2>
+
+<p>See <a href="http://xmerge.me/StreamingCC-api">API docs</a> for details.</p>
+
+<h2>
+<a id="dependencies" class="anchor" href="#dependencies" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dependencies</h2>
+
+<ul>
+<li>CMake (&gt;= 2.8.9)</li>
+<li>C++11 support</li>
+</ul>
+
+<h2>
+<a id="how-to-compile" class="anchor" href="#how-to-compile" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to Compile</h2>
+
+<p>The source code compiles to static library. </p>
+
+<h3>
+<a id="step-one" class="anchor" href="#step-one" aria-hidden="true"><span class="octicon octicon-link"></span></a>Step One</h3>
+
+<p>Open a terminal, and</p>
+
+<pre><code>$ git clone git@github.com:jiecchen/StreamingCC.git
+</code></pre>
+
+<h3>
+<a id="step-two" class="anchor" href="#step-two" aria-hidden="true"><span class="octicon octicon-link"></span></a>Step Two</h3>
+
+<p>Enter StreamingCC/build, and run</p>
+
+<pre><code>$ cmake ..
+</code></pre>
+
+<p>Which generates a <code>Makefile</code> in current dir.</p>
+
+<h3>
+<a id="step-three" class="anchor" href="#step-three" aria-hidden="true"><span class="octicon octicon-link"></span></a>Step Three</h3>
+
+<p>Now you can make the library via</p>
+
+<pre><code>$ make
+</code></pre>
+
+<p>If you want to make the library aware by system-wide, run the following</p>
+
+<pre><code>$ sudo make install
+</code></pre>
+
+<p>Which will copy <code>libstreamcc.a</code> to <code>/usr/lib</code>  and all headers to <code>/usr/local/include/streamcc/</code>. You need to use <strong>-lstreamcc</strong> flag to link to the static library.</p>
+
+<h2>
+<a id="a-example" class="anchor" href="#a-example" aria-hidden="true"><span class="octicon octicon-link"></span></a>A Example</h2>
+
+<p>Assume you have install the library system-wide, and you have a file <code>test.cpp</code> with following content,</p>
+
+<div class="highlight highlight-source-c++"><pre>
+#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>streamcc/Sampling.hpp<span class="pl-pds">&gt;</span></span>
+#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>iostream<span class="pl-pds">&gt;</span></span>
+
+<span class="pl-k">int</span> <span class="pl-en">main</span>() {
+    <span class="pl-c">// create an object which will maintain</span>
+    <span class="pl-c">// 10 samples (with replacement) dynamically</span>
+    ReservoirSampling&lt;<span class="pl-k">int</span>&gt; <span class="pl-c1">rsmp</span>(<span class="pl-c1">10</span>);
+    <span class="pl-c">// sample from a data stream with length 1000,000</span>
+    <span class="pl-k">for</span> (<span class="pl-k">int</span> i = <span class="pl-c1">0</span>; i &lt; <span class="pl-c1">1000000</span>; i++)
+        rsmp.<span class="pl-c1">processItem</span>(i);
+
+    <span class="pl-c">// print the samples</span>
+    <span class="pl-k">for</span> (<span class="pl-k">auto</span> sample: rsmp.<span class="pl-c1">getSamples</span>())
+        std::cout &lt;&lt; sample &lt;&lt; <span class="pl-s"><span class="pl-pds">"</span> <span class="pl-pds">"</span></span>;
+    std::cout &lt;&lt; std::endl;
+    <span class="pl-k">return</span> <span class="pl-c1">0</span>;
+}</pre></div>
+
+<p>Now compile with</p>
+
+<pre><code>$ g++ -std=c++11 -O3 -o test test.cpp -lstreamcc
+</code></pre>
+
+<p>and run</p>
+
+<pre><code>$ ./test
+843605 343835 655954 727411 781901 856163 385544 417329 374657 925313
+</code></pre>
+
+<p>It samples ( with replacements) 10 items from a data stream with length one million. The memory it uses linearly depends on number of samples.</p>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>MIT License</p>
       </section>
     </div>
 
