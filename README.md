@@ -1,6 +1,6 @@
 StreamingCC
 ----------------------
-A C++ library for summarizing data streams.
+A (pure) C++ library for summarizing data streams.
 
 ## Algorithms
 `StreamingCC` implements various [streaming algorithms](https://en.wikipedia.org/wiki/Streaming_algorithm) and [probabilistic data structures](https://en.wikipedia.org/wiki/Category:Probabilistic_data_structures). They can be used to effectively summarize the data stream even when data is too large to fit into memory.
@@ -23,5 +23,15 @@ Algorithms/Data Structures included in `StreamingCC`:
 ## Documentation
 See [xmerge.me/StreamingCC](http://xmerge.me/StreamingCC/).
 
+## Dependencies
++ CMake (>= 2.8.9)
++ C++11 support
+
+## How to Compile
+The source code compile to static library
+See [xmerge.me/StreamingCC](http://xmerge.me/StreamingCC/) for details.
+
+
 
 ## License
+MIT License
