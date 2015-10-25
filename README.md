@@ -28,7 +28,7 @@ See [xmerge.me/StreamingCC](http://xmerge.me/StreamingCC/).
 + C++11 support
 
 ## How to Compile
-The source code compile to static library
+The source code compiles to static library
 See [xmerge.me/StreamingCC](http://xmerge.me/StreamingCC/) for details.
 
 
