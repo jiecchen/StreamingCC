@@ -3,4 +3,4 @@ StreamingCC
 A C++ library for summarizing data streams
 
 ## Documentation
-[docs](http://xmerge.me/StreamingCC/)
+See [xmerge.me/StreamingCC](http://xmerge.me/StreamingCC/).
