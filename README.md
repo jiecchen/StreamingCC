@@ -3,7 +3,7 @@ StreamingCC
 A C++ library for summarizing data streams.
 
 ## Algorithms
-`StreamingCC` implements various [streaming algorithms](https://en.wikipedia.org/wiki/Streaming_algorithm) and [probabilistic data structures](https://en.wikipedia.org/wiki/Category:Probabilistic_data_structures). They can be used to effectively summarize the data stream even when it is too large to fit into memory.
+`StreamingCC` implements various [streaming algorithms](https://en.wikipedia.org/wiki/Streaming_algorithm) and [probabilistic data structures](https://en.wikipedia.org/wiki/Category:Probabilistic_data_structures). They can be used to effectively summarize the data stream even when data is too large to fit into memory.
 
 Algorithms/Data Structures included in `StreamingCC`:
 + [Count-Min Sketch](https://en.wikipedia.org/wiki/Count%E2%80%93min_sketch)
