@@ -1,0 +1,57 @@
+\hypertarget{classCountSketch}{}\section{Count\+Sketch$<$ T $>$ Class Template Reference}
+\label{classCountSketch}\index{Count\+Sketch$<$ T $>$@{Count\+Sketch$<$ T $>$}}
+
+
+Process general type of data stream.  
+
+
+
+
+{\ttfamily \#include $<$Count\+Sketch.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classCountSketch_a7fce7d2503fbd2735d21e2263011b98e}{Count\+Sketch} (int \+\_\+m, int \+\_\+d=20)
+\item 
+void \hyperlink{classCountSketch_acd783350ba445753b2d64cd87bbae236}{process\+Item} (const T \&item, double weight=1)\hypertarget{classCountSketch_acd783350ba445753b2d64cd87bbae236}{}\label{classCountSketch_acd783350ba445753b2d64cd87bbae236}
+
+\begin{DoxyCompactList}\small\item\em process a given (weighted) item \end{DoxyCompactList}\item 
+double \hyperlink{classCountSketch_aac4e2082b912799cd9ca83f35c0a4000}{est\+Tot\+Weight} (const T \&item)\hypertarget{classCountSketch_aac4e2082b912799cd9ca83f35c0a4000}{}\label{classCountSketch_aac4e2082b912799cd9ca83f35c0a4000}
+
+\begin{DoxyCompactList}\small\item\em give an estimation of total weight of the given item \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$\\*
+class Count\+Sketch$<$ T $>$}
+
+Process general type of data stream. Inheritance diagram for Count\+Sketch$<$ T $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classCountSketch}
+\end{center}
+\end{figure}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Count\+Sketch@{Count\+Sketch}!Count\+Sketch@{Count\+Sketch}}
+\index{Count\+Sketch@{Count\+Sketch}!Count\+Sketch@{Count\+Sketch}}
+\subsubsection[{Count\+Sketch(int \+\_\+m, int \+\_\+d=20)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ {\bf Count\+Sketch}$<$ T $>$\+::{\bf Count\+Sketch} (
+\begin{DoxyParamCaption}
+\item[{int}]{\+\_\+m, }
+\item[{int}]{\+\_\+d = {\ttfamily 20}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classCountSketch_a7fce7d2503fbd2735d21e2263011b98e}{}\label{classCountSketch_a7fce7d2503fbd2735d21e2263011b98e}
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+m} & size of buffer \\
+\hline
+{\em \+\_\+d} & number of buffers \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/Count\+Sketch.\+hpp\end{DoxyCompactItemize}

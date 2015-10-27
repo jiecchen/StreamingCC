@@ -1,0 +1,69 @@
+\hypertarget{classCountMin}{}\section{Count\+Min$<$ T $>$ Class Template Reference}
+\label{classCountMin}\index{Count\+Min$<$ T $>$@{Count\+Min$<$ T $>$}}
+
+
+Process general type of data stream.  
+
+
+
+
+{\ttfamily \#include $<$Count\+Min.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classCountMin_aece65a6967ad83ebe550d1559a09d0b1}{Count\+Min} (int \+\_\+m, int \+\_\+d=20)
+\item 
+void \hyperlink{classCountMin_a674f3b831f782fa8ac2daf335a237946}{process\+Item} (const T \&item, double weight=1)\hypertarget{classCountMin_a674f3b831f782fa8ac2daf335a237946}{}\label{classCountMin_a674f3b831f782fa8ac2daf335a237946}
+
+\begin{DoxyCompactList}\small\item\em process a given (weighted) item \end{DoxyCompactList}\item 
+double \hyperlink{classCountMin_ae4f0d164f8ee77ecbf65fc83f4d8ac71}{est\+Tot\+Weight} (const T \&item)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$\\*
+class Count\+Min$<$ T $>$}
+
+Process general type of data stream. Inheritance diagram for Count\+Min$<$ T $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classCountMin}
+\end{center}
+\end{figure}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Count\+Min@{Count\+Min}!Count\+Min@{Count\+Min}}
+\index{Count\+Min@{Count\+Min}!Count\+Min@{Count\+Min}}
+\subsubsection[{Count\+Min(int \+\_\+m, int \+\_\+d=20)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ {\bf Count\+Min}$<$ T $>$\+::{\bf Count\+Min} (
+\begin{DoxyParamCaption}
+\item[{int}]{\+\_\+m, }
+\item[{int}]{\+\_\+d = {\ttfamily 20}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classCountMin_aece65a6967ad83ebe550d1559a09d0b1}{}\label{classCountMin_aece65a6967ad83ebe550d1559a09d0b1}
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+m} & size of buffer \\
+\hline
+{\em \+\_\+d} & number of buffers \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{Count\+Min@{Count\+Min}!est\+Tot\+Weight@{est\+Tot\+Weight}}
+\index{est\+Tot\+Weight@{est\+Tot\+Weight}!Count\+Min@{Count\+Min}}
+\subsubsection[{est\+Tot\+Weight(const T \&item)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ double {\bf Count\+Min}$<$ T $>$\+::est\+Tot\+Weight (
+\begin{DoxyParamCaption}
+\item[{const T \&}]{item}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classCountMin_ae4f0d164f8ee77ecbf65fc83f4d8ac71}{}\label{classCountMin_ae4f0d164f8ee77ecbf65fc83f4d8ac71}
+\begin{DoxyReturn}{Returns}
+estimation of total weight of the given item 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/Count\+Min.\+hpp\end{DoxyCompactItemize}

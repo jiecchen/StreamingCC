@@ -1,0 +1,67 @@
+\hypertarget{classCountSketch__basic}{}\section{Count\+Sketch\+\_\+basic Class Reference}
+\label{classCountSketch__basic}\index{Count\+Sketch\+\_\+basic@{Count\+Sketch\+\_\+basic}}
+
+
+\hyperlink{classCountSketch__basic}{Count\+Sketch\+\_\+basic} only process Item\+Type (aka int) stream, weight can be negative.  
+
+
+
+
+{\ttfamily \#include $<$Count\+Sketch\+\_\+basic.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classCountSketch__basic_ace66ec874475371b17f3198fa58f4a64}{Count\+Sketch\+\_\+basic} (int \+\_\+m, int \+\_\+d=20)
+\item 
+void \hyperlink{classCountSketch__basic_a0b04a877b096e34e3f924ff4db7b364d}{process\+Item} (const Item\+Type \&item, double weight=1)\hypertarget{classCountSketch__basic_a0b04a877b096e34e3f924ff4db7b364d}{}\label{classCountSketch__basic_a0b04a877b096e34e3f924ff4db7b364d}
+
+\begin{DoxyCompactList}\small\item\em process a given (weighted) item \end{DoxyCompactList}\item 
+double \hyperlink{classCountSketch__basic_a39969d1f299e61c5c69d8e80bf0f6046}{est\+Tot\+Weight} (const Item\+Type \&item)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classCountSketch__basic}{Count\+Sketch\+\_\+basic} only process Item\+Type (aka int) stream, weight can be negative. Inheritance diagram for Count\+Sketch\+\_\+basic\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classCountSketch__basic}
+\end{center}
+\end{figure}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Count\+Sketch\+\_\+basic@{Count\+Sketch\+\_\+basic}!Count\+Sketch\+\_\+basic@{Count\+Sketch\+\_\+basic}}
+\index{Count\+Sketch\+\_\+basic@{Count\+Sketch\+\_\+basic}!Count\+Sketch\+\_\+basic@{Count\+Sketch\+\_\+basic}}
+\subsubsection[{Count\+Sketch\+\_\+basic(int \+\_\+m, int \+\_\+d=20)}]{\setlength{\rightskip}{0pt plus 5cm}Count\+Sketch\+\_\+basic\+::\+Count\+Sketch\+\_\+basic (
+\begin{DoxyParamCaption}
+\item[{int}]{\+\_\+m, }
+\item[{int}]{\+\_\+d = {\ttfamily 20}}
+\end{DoxyParamCaption}
+)}\hypertarget{classCountSketch__basic_ace66ec874475371b17f3198fa58f4a64}{}\label{classCountSketch__basic_ace66ec874475371b17f3198fa58f4a64}
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+m} & size of buffer \\
+\hline
+{\em \+\_\+d} & number of buffers \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{Count\+Sketch\+\_\+basic@{Count\+Sketch\+\_\+basic}!est\+Tot\+Weight@{est\+Tot\+Weight}}
+\index{est\+Tot\+Weight@{est\+Tot\+Weight}!Count\+Sketch\+\_\+basic@{Count\+Sketch\+\_\+basic}}
+\subsubsection[{est\+Tot\+Weight(const Item\+Type \&item)}]{\setlength{\rightskip}{0pt plus 5cm}double Count\+Sketch\+\_\+basic\+::est\+Tot\+Weight (
+\begin{DoxyParamCaption}
+\item[{const Item\+Type \&}]{item}
+\end{DoxyParamCaption}
+)}\hypertarget{classCountSketch__basic_a39969d1f299e61c5c69d8e80bf0f6046}{}\label{classCountSketch__basic_a39969d1f299e61c5c69d8e80bf0f6046}
+\begin{DoxyReturn}{Returns}
+estimation of total weight of the given item 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/Count\+Sketch\+\_\+basic.\+h\item 
+src/Count\+Sketch\+\_\+basic.\+cpp\end{DoxyCompactItemize}

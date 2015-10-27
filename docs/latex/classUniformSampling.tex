@@ -1,0 +1,82 @@
+\hypertarget{classUniformSampling}{}\section{Uniform\+Sampling$<$ T $>$ Class Template Reference}
+\label{classUniformSampling}\index{Uniform\+Sampling$<$ T $>$@{Uniform\+Sampling$<$ T $>$}}
+
+
+Uniform sampling over a data stream.  
+
+
+
+
+{\ttfamily \#include $<$Sampling.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classUniformSampling_aa2d2dbe301e4156142c670448ad5dbaf}{Uniform\+Sampling} (int \+\_\+n\+Samples, bool \+\_\+with\+Rpl=true)
+\item 
+void \hyperlink{classUniformSampling_a53155f91000902128df0df27ef0b5255}{process\+Item} (const T \&item, double weight=1.)
+\begin{DoxyCompactList}\small\item\em process a given item \end{DoxyCompactList}\item 
+std\+::vector$<$ T $>$ {\bfseries get\+Samples} ()\hypertarget{classUniformSampling_a29211c5698ab1c326332d02c509ca488}{}\label{classUniformSampling_a29211c5698ab1c326332d02c509ca488}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$\\*
+class Uniform\+Sampling$<$ T $>$}
+
+Uniform sampling over a data stream. 
+
+Internally, it\textquotesingle{}s using the notable {\ttfamily reservoir sampling} algorithm. \hyperlink{classSampling}{Sampling} can be done with or without replacement. Inheritance diagram for Uniform\+Sampling$<$ T $>$\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classUniformSampling}
+\end{center}
+\end{figure}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Uniform\+Sampling@{Uniform\+Sampling}!Uniform\+Sampling@{Uniform\+Sampling}}
+\index{Uniform\+Sampling@{Uniform\+Sampling}!Uniform\+Sampling@{Uniform\+Sampling}}
+\subsubsection[{Uniform\+Sampling(int \+\_\+n\+Samples, bool \+\_\+with\+Rpl=true)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ {\bf Uniform\+Sampling}$<$ T $>$\+::{\bf Uniform\+Sampling} (
+\begin{DoxyParamCaption}
+\item[{int}]{\+\_\+n\+Samples, }
+\item[{bool}]{\+\_\+with\+Rpl = {\ttfamily true}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classUniformSampling_aa2d2dbe301e4156142c670448ad5dbaf}{}\label{classUniformSampling_aa2d2dbe301e4156142c670448ad5dbaf}
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+n\+Samples} & number of samples wanted \\
+\hline
+{\em \+\_\+with\+Rpl} & whether sampling with replacement \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{Uniform\+Sampling@{Uniform\+Sampling}!process\+Item@{process\+Item}}
+\index{process\+Item@{process\+Item}!Uniform\+Sampling@{Uniform\+Sampling}}
+\subsubsection[{process\+Item(const T \&item, double weight=1.)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ void {\bf Uniform\+Sampling}$<$ T $>$\+::process\+Item (
+\begin{DoxyParamCaption}
+\item[{const T \&}]{item, }
+\item[{double}]{weight = {\ttfamily 1.}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}\hypertarget{classUniformSampling_a53155f91000902128df0df27ef0b5255}{}\label{classUniformSampling_a53155f91000902128df0df27ef0b5255}
+
+
+process a given item 
+
+Note\+: for now {\ttfamily without\+\_\+replacement} version can only handle unweighted data stream 
+\begin{DoxyParams}{Parameters}
+{\em weight} & weight must be positive \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classSampling}{Sampling$<$ T $>$}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/Sampling.\+hpp\end{DoxyCompactItemize}
