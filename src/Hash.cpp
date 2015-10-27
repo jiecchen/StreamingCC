@@ -8,7 +8,7 @@
 
 
 #include <cstdlib>
-#include "../include/Hash.h"
+#include "../include/streamcc_headers/Hash.h"
 
 uint32_t murmurhash(const int *key, uint32_t seed) {
   uint32_t len = sizeof(int);

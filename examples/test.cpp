@@ -1,11 +1,11 @@
 #include <vector>
 #include <iostream>
-#include "../include/Hash.h"
-#include "../include/CountMin.hpp"
-#include "../include/Sampling.hpp"
-#include "../include/Algebra.hpp"
+#include "../include/streamcc"
 #include <random>
 #include <map>
+
+using namespace Scc;
+
 
 std::mt19937 gen;
 
@@ -59,22 +59,22 @@ void test_Sampling() {
 
 
 
-void test_Algebra() {
-  Algebra::Matrix m = Algebra::makeMatrix(2, 2);
-  m[0][0] = m[1][1] = 9;
-  m[0][1] = m[1][0] = 9;
-  double det;
-  Algebra::gaussianElimination(m, det);
-  std::cout << "det(m) = " << det << std::endl;
-}
+// void test_Algebra() {
+//   Algebra::Matrix m = Algebra::makeMatrix(2, 2);
+//   m[0][0] = m[1][1] = 9;
+//   m[0][1] = m[1][0] = 9;
+//   double det;
+//   Algebra::gaussianElimination(m, det);
+//   std::cout << "det(m) = " << det << std::endl;
+// }
 
 
 int main() {
   // test_CountMin();
   // std::cout << "----------------------------------" << std::endl;
   // test_CountSketch();
-  // test_Sampling();
-  test_Algebra();
+  test_Sampling();
+  // test_Algebra();
   return 0;
 }
 

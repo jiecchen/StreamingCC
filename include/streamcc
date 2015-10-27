@@ -1,0 +1,15 @@
+#ifndef __STREAMCC__
+#define __STREAMCC__
+#include "streamcc_headers/Sampling.hpp"
+#include "streamcc_headers/CountMin.hpp"
+#include "streamcc_headers/CountSketch.hpp"
+
+
+
+
+#endif
+
+
+
+
+

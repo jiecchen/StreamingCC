@@ -10,11 +10,13 @@
  * in this library.
  */
 
-template <typename T>   
-class Sketch {
-public:
-  //! process a given (possibly weighted) item
-  virtual void processItem(const T &item, double weight) = 0;
-};
+namespace Scc {
+  template <typename T>   
+  class Sketch {
+  public:
+    //! process a given (possibly weighted) item
+    virtual void processItem(const T &item, double weight) = 0;
+  };
+}
 
 #endif

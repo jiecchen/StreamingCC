@@ -1,13 +1,14 @@
 // Copyright (C) 2015 by Jiecao Chen (chenjiecao@gmail.com)
 
-#include "../include/CountSketch_basic.h"
-#include "../include/Hash.h"
+#include "../include/streamcc_headers/CountSketch_basic.h"
+#include "../include/streamcc_headers/Hash.h"
 #include <vector>
 #include <cstdlib>
 #include <ctime>
 #include <algorithm>
 #include <functional>
 
+using namespace Scc;
 
 
 
