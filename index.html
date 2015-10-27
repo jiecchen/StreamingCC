@@ -32,7 +32,7 @@
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
         <h2>
-<a id="streamingcc" class="anchor" href="#streamingcc" aria-hidden="true"><span class="octicon octicon-link"></span></a>StreamingCC</h2>
+<a id="ingcc" class="anchor" href="#ingcc" aria-hidden="true"><span class="octicon octicon-link"></span></a>ingCC</h2>
 
 <p>A (pure) C++ library for summarizing data streams.</p>
 
@@ -85,7 +85,7 @@
 <h3>
 <a id="step-two" class="anchor" href="#step-two" aria-hidden="true"><span class="octicon octicon-link"></span></a>Step Two</h3>
 
-<p>Enter <code>StreamingCC/build</code>, and run</p>
+<p>Enter <code>StreamingCC/</code>, and run</p>
 
 <pre><code>$ cmake ..
 </code></pre>
@@ -105,7 +105,10 @@
 <pre><code>$ sudo make install
 </code></pre>
 
-<p>Which will copy <code>libstreamcc.a</code> to <code>/usr/lib</code>  and all headers to <code>/usr/local/include/streamcc/</code>. You need to use <strong>-lstreamcc</strong> flag to link to the static library.</p>
+<p>To use the library, you need to include the header <code>#include&lt;streamcc&gt;</code>
+in your code and use <strong>-lstreamcc</strong> flag to link to the static library.
+All functionalities provided by this library is organized under the namespace
+<code>Scc</code>;</p>
 
 <h2>
 <a id="a-example" class="anchor" href="#a-example" aria-hidden="true"><span class="octicon octicon-link"></span></a>A Example</h2>
@@ -113,8 +116,9 @@
 <p>Assume you have run <code>sudo make install</code>, and you have a file <code>test.cpp</code> with following content,</p>
 
 <div class="highlight highlight-source-c++"><pre>
-#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>streamcc/Sampling.hpp<span class="pl-pds">&gt;</span></span>
+#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>streamcc<span class="pl-pds">&gt;</span></span>
 #<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>iostream<span class="pl-pds">&gt;</span></span>
+<span class="pl-k">using</span> <span class="pl-k">namespace</span> <span class="pl-en">Scc</span><span class="pl-k">;</span>
 
 <span class="pl-k">int</span> <span class="pl-en">main</span>() {
     <span class="pl-c">// create an object which will maintain</span>
