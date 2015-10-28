@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 2.8.9)
 project (StreamingCC)
 
+#Specify -O3
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -std=c++11")
 #Specify C++11 flag
 include(CheckCXXCompilerFlag)
 CHECK_CXX_COMPILER_FLAG("-std=c++11" COMPILER_SUPPORTS_CXX11)
@@ -17,9 +19,22 @@ endif()
 
 # For the static library:
 set ( PROJECT_LINK_LIBS libstreamcc.a )
+
 link_directories( ../build)
 
 include_directories( ../include)
 
 add_executable(test test.cpp)
-target_link_libraries(test ${PROJECT_LINK_LIBS} )
+add_executable(sv sieve_test.cpp)
+# check if Armadillo exists
+find_package(Armadillo REQUIRED)
+if (ARMADILLO_FOUND)
+  add_definitions(-DARMA_FOUND)
+  target_link_libraries(test ${PROJECT_LINK_LIBS} armadillo)
+  target_link_libraries(sv ${PROJECT_LINK_LIBS} armadillo)
+else (ARMADILLO_FOUND)
+  target_link_libraries(test ${PROJECT_LINK_LIBS})
+  target_link_libraries(sv ${PROJECT_LINK_LIBS})
+endif (ARMADILLO_FOUND)
+
+

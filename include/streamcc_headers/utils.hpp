@@ -14,6 +14,17 @@ namespace utils {
 }
 
 
+class Gaussian {
+  std::normal_distribution<double> *distPtr;
+public:
+  Gaussian(double m, double sig) {
+    distPtr = new std::normal_distribution<double>(m, sig);
+  };
+  double rand() {
+    return (*distPtr)(utils::gen);
+  };
+  ~Gaussian() {delete distPtr; }
+};
 
 //! return random double between 0. and 1.
 double rand_double() {
