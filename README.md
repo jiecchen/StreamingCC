@@ -27,6 +27,7 @@ See [xmerge.me/StreamingCC](http://xmerge.me/StreamingCC/).
 + CMake (>= 2.8.9)
 + C++11 support required
 + [Armadillo](http://arma.sourceforge.net/) (optional, required by some features)
+
 ## How to Compile
 The source code compiles to static library
 See [xmerge.me/StreamingCC](http://xmerge.me/StreamingCC/) for details.
