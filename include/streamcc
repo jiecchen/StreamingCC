@@ -3,7 +3,7 @@
 #include "streamcc_headers/Sampling.hpp"
 #include "streamcc_headers/CountMin.hpp"
 #include "streamcc_headers/CountSketch.hpp"
-#ifdef ARMA_FOUND
+#ifdef ARMA
   #include "streamcc_headers/SieveStreaming.hpp"
   #include "streamcc_headers/CVector.hpp"
 #endif
