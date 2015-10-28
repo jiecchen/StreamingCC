@@ -6,7 +6,7 @@
 #include <deque>
 #include "utils.hpp"
 #include <cstdlib>
-#include "CVector.hpp"
+//#include "CVector.hpp"
 #include <armadillo>
 
 
@@ -29,12 +29,14 @@
 /////////////////////////// abstract class for SieveKnowOpt ///////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////
 namespace Scc {
+  
+  typedef std::vector<arma::vec> Vectors;
 
   //! Abstract class for SieveStreaming Algorithm with known optimal value
 
   /**
      + f() : the monotone submordular to be optimized
-     + marginal_gain(const CVector& item) : the marginal gain when a new item added 
+     + marginal_gain(const arma::vec& item) : the marginal gain when a new item added 
   */
   class CSieveKnowOpt {
   protected:
@@ -49,9 +51,9 @@ namespace Scc {
     //! monotone submordular to be optimized
     virtual double f() = 0; 
     //! marginal gain when a new item added 
-    virtual double marginal_gain(const CVector& item) = 0;
+    virtual double marginal_gain(const arma::vec& item) = 0;
     //! update internal states when a new item comes
-    void update(const CVector& item) {
+    void update(const arma::vec& item) {
       if ((int) S.size() < k 
 	  && marginal_gain(item) >= (opt_est / 2. - f()) / (k - S.size()))
 	appendNewCenter(item);
@@ -63,7 +65,7 @@ namespace Scc {
     }
 
     //! append a new center to quene, may need to update intern states
-    virtual void appendNewCenter(const CVector& item) {
+    virtual void appendNewCenter(const arma::vec& item) {
       // S.push_back(item);
     }
 
@@ -77,8 +79,9 @@ namespace Scc {
 
 
   //! Gaussion kernel function, can be override to support other kernel
-  double K(const CVector &v1, const CVector &v2, double h = 100.) {
-    return std::exp(- dist(v1, v2) / h);
+  double K(const arma::vec &v1, const arma::vec &v2, double h = 100.) {
+    double d = arma::norm(v1 - v2, 2);
+    return std::exp(- d * d / h);
   }
 
   
@@ -124,13 +127,13 @@ namespace Scc {
       return log_det_val - penalty * S.size();
     };
 
-    void appendNewCenter(const CVector& item) {
+    void appendNewCenter(const arma::vec& item) {
       S.push_back(item);
       log_det_val += cur_marginal_gain;
     }
 
   
-    double marginal_gain(const CVector& item) {
+    double marginal_gain(const arma::vec& item) {
       Vectors block;
       for (auto &itm: this->S)
 	if (K(item, itm) > thresh)
@@ -185,7 +188,7 @@ namespace Scc {
 
 
     //! update internal states when a new item comes
-    void update(CVector& item) {
+    void update(arma::vec& item) {
       // estimate f({item})
       double f_item = svPtr->marginal_gain(item);
     
