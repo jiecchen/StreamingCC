@@ -14,12 +14,17 @@ namespace utils {
 }
 
 
+
+//! Easy-to-use Gaussian Distribution
 class Gaussian {
+private:
   std::normal_distribution<double> *distPtr;
 public:
+  //! Constructor
   Gaussian(double m, double sig) {
     distPtr = new std::normal_distribution<double>(m, sig);
   };
+  //! return a random number ~ N(m, sig)
   double rand() {
     return (*distPtr)(utils::gen);
   };

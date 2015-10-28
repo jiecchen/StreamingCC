@@ -9,6 +9,7 @@
 
 namespace Scc {
 
+  //! Buffer of ItemType
   typedef std::vector<ItemType> Buffer;
 
 
@@ -20,12 +21,13 @@ namespace Scc {
     std::vector<Buffer> d_buf; // to keep d buffers
     std::vector<int> seeds;
   public:
+    //! Constructor
     CountMin_basic(int _m, //!< size of buffer 
 		   int _d=20 //!< number of buffers
 		   );
     //! process a given (weighted) item
     void processItem(const ItemType &item, double weight=1);
-    //! @return estimation of total weight of the given item
+    //! return estimation of total weight of the given item
     double estTotWeight(const ItemType &item);
   };
 

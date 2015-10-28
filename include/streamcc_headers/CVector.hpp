@@ -8,9 +8,12 @@
 // it can be initialized using both std::vector and normal array
 namespace Scc {
 
+  //! a data point (aka item in data stream)
   typedef std::vector<double> Vdouble;
 
   typedef Vdouble CVector;
+
+  //! vector of items
   typedef std::vector<Vdouble> Vectors;
 
   std::string to_string(const Vdouble& data) { 

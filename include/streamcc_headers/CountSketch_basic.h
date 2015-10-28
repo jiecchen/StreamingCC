@@ -21,12 +21,13 @@ namespace Scc {
     std::vector<int> seeds;
     std::vector<int> sign_seeds; // seeds to generate random sign
   public:
+    //!  Constructor
     CountSketch_basic(int _m, //!< size of buffer 
 		      int _d=20 //!< number of buffers
 		      );
     //! process a given (weighted) item
     void processItem(const ItemType &item, double weight=1);
-    //! @return estimation of total weight of the given item
+    //! return estimation of total weight of the given item
     double estTotWeight(const ItemType &item);
   };
 }

@@ -3,8 +3,8 @@
 #ifndef __SKETCH_H__
 #define __SKETCH_H__
 
-/* Abstract Class for Sketch
- *
+//! Abstract Class for Sketch
+/**
  * This class defines several common
  * interfaces shared by all Sketches
  * in this library.

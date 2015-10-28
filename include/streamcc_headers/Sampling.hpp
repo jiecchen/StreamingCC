@@ -9,16 +9,21 @@
 
 namespace Scc {
 
+  //! Abstract class to support sampling over data stream
   template <typename T>
   class Sampling {
   public:
-    virtual void processItem(const T &item, double weight) = 0;
+    //! Process a given (weighted) item
+    virtual void processItem(const T &item, //!< item with type T
+			     double weight //!< probability being sampled proportional to weight
+			     ) = 0;
+    //! return the set of samples
     virtual std::vector<T> getSamples() = 0;
   }; 
 
 
   //! Sampling over a data stream via Reservoir Sampling
-  /*!
+  /**
    * - For sampling with replacement, both weighted an unweighted
    *   data streams are supported.
    * - For sampling without replacement, currently only support unweighted
@@ -60,6 +65,7 @@ namespace Scc {
     };
 
   public:
+    //! Constructor
     ReservoirSampling(int _nSamples, //!< number of samples wanted
 		      bool _withRpl=true  //!< whether sampling with replacement	 
 		      ): 
@@ -70,7 +76,7 @@ namespace Scc {
       Note: for now `without_replacement` version
       can only handle unweighted data stream
     */
-    void processItem(const T &item, 
+    void processItem(const T &item, //!< item to be processed
 		     double weight=1. //!< weight must be positive
 		     ) {
       if (!withReplacementQ)

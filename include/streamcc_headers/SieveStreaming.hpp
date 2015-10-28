@@ -13,9 +13,7 @@
 
 
 
-/////////////////////////////////////////////////////////
-/////////////  Defintion for CVector ////////////////////
-/////////////////////////////////////////////////////////
+
 
 
 // Comments:
@@ -32,30 +30,45 @@
 ///////////////////////////////////////////////////////////////////////////////////////
 namespace Scc {
 
+  //! Abstract class for SieveStreaming Algorithm with known optimal value
+
+  /**
+     + f() : the monotone submordular to be optimized
+     + marginal_gain(const CVector& item) : the marginal gain when a new item added 
+  */
   class CSieveKnowOpt {
   protected:
-    double opt_est;
-    int k;
-    Vectors S; // to keep the centers
+    double opt_est; //!< the estimated optimal maximum 
+    int k; //!< Upper bound of number of centers
+    Vectors S; //!< to keep the selected centers
   public:
-    CSieveKnowOpt(int _k, double _opt_est): opt_est(_opt_est), k(_k) {};
-    virtual double f() = 0;
+    //! Constructor
+    CSieveKnowOpt(int _k, //!< Upper bound of number of centers
+		  double _opt_est //!< the estimated optimal maximum
+		  ): opt_est(_opt_est), k(_k) {};
+    //! monotone submordular to be optimized
+    virtual double f() = 0; 
+    //! marginal gain when a new item added 
     virtual double marginal_gain(const CVector& item) = 0;
+    //! update internal states when a new item comes
     void update(const CVector& item) {
       if ((int) S.size() < k 
 	  && marginal_gain(item) >= (opt_est / 2. - f()) / (k - S.size()))
 	appendNewCenter(item);
     }
 
+    //! return the centers selected
     Vectors getCenters() {
       return this->S;
     }
 
+    //! append a new center to quene, may need to update intern states
     virtual void appendNewCenter(const CVector& item) {
       // S.push_back(item);
     }
 
   
+    //! return estimated optimal maximum
     double getOptEst() {
       return this->opt_est;
     }
@@ -63,12 +76,17 @@ namespace Scc {
   };
 
 
-  // kernel function
+  //! Gaussion kernel function, can be override to support other kernel
   double K(const CVector &v1, const CVector &v2, double h = 100.) {
     return std::exp(- dist(v1, v2) / h);
   }
 
+  
+  //! Informative Vector Machine: log-det of I + sigma * K(S)
 
+  /**
+     k(S) is the kernal matrix of set S
+  */
   double log_det_IVM(const Vectors &S, double sigma=1.) {
     arma::mat tmp = arma::eye<arma::mat>(S.size(), S.size());
     for (size_t i = 0; i < S.size(); ++i)
@@ -81,10 +99,13 @@ namespace Scc {
 
 
 
-  // for IVM (informative Vector Machine)
-  // TODO: estimate log-det of (I + sigma^{-2} \Sigma)
-  // check: + http://www.shogun-toolbox.org/static/notebook/current/logdet.html
-  //        + http://arxiv.org/pdf/1105.5256v1.pdf
+
+
+  //! An implementation of CSieveKnowOpt: Informative Vector Machine (IVM)
+  /**
+     One can implement their own CSieveKnowOpt to support
+     other monotone submordular function
+   */
   class SieveKnowOptIVM: public CSieveKnowOpt {
   private:
     double log_det_val;    // to keep the current log_det(I + sigma* K(S))
@@ -92,7 +113,13 @@ namespace Scc {
     double thresh;
     double cur_marginal_gain;
   public:
-    SieveKnowOptIVM(int _k, double _opt_est, double _penalty): CSieveKnowOpt(_k, _opt_est), log_det_val(0.), penalty(_penalty), thresh(1e-1) {};
+    //! Constructor
+    SieveKnowOptIVM(int _k, //!< Upper bound of number of centers
+		    double _opt_est, //!< the estimated optimal maximum
+		    double _penalty //!< add penalty to control the growth of centers
+		    ): CSieveKnowOpt(_k, _opt_est), log_det_val(0.), penalty(_penalty), thresh(1e-1) {};
+    
+    //! monotone submordular function to be optimized
     double f() {    
       return log_det_val - penalty * S.size();
     };
@@ -129,6 +156,14 @@ namespace Scc {
 
 
 
+  //! Class template for monotone submodular function optimization in data stream
+
+  /**
+     T must be an implementation of the abstract class CSieveKnowOpt.
+     This class then processes item by item in the data stream,
+     and return a set of centers (selected from data streams)
+     that approximately maximizes the function f()
+  */
   template <class T>
   class CSieveStreaming {
   private:
@@ -139,12 +174,17 @@ namespace Scc {
     double penalty;
     std::deque<T> O;
   public:
-    CSieveStreaming(int _k, double _eps, double _penalty): 
+    //! Constructor
+    CSieveStreaming(int _k, //!< Upper bound of number of centers
+		    double _eps, //!< Parameter to control the approximation ratio
+		    double _penalty=0 //!< add penalty to control the growth of centers
+		    ): 
       k(_k), eps(_eps), m(0.), penalty(_penalty) {
       this->svPtr = new T(0, 100, penalty);    
     };
 
 
+    //! update internal states when a new item comes
     void update(CVector& item) {
       // estimate f({item})
       double f_item = svPtr->marginal_gain(item);
@@ -171,7 +211,8 @@ namespace Scc {
     };
 
 
-    Vectors getOptMedoids() {
+    //! return the set of centers maximize the objective function f()
+    Vectors getCenters() {
       int max_i = 0;
       double max_f = O[max_i].f();
       for (unsigned int i = 1; i < O.size(); ++i) {
@@ -181,7 +222,7 @@ namespace Scc {
 	  max_i = i;
 	}
       }
-      std::cerr << "max_f(S) = " << max_f << std::endl;
+      // std::cerr << "max_f(S) = " << max_f << std::endl;
       return O[max_i].getCenters();
     }
 
