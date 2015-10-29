@@ -10,7 +10,7 @@
 #include "streamcc_headers/CountSketch.hpp"
 #include "streamcc_headers/CountSketch_basic.h"
 #include "streamcc_headers/Hash.h"
-//#include "streamcc_headers/Algebra.hpp"
+#include "streamcc_headers/utils.hpp"
 
 
 
