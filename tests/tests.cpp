@@ -52,6 +52,12 @@ BOOST_AUTO_TEST_CASE(CountMin_Test) {
 
 
 
+BOOST_AUTO_TEST_CASE(Zeros_Test) {
+  BOOST_CHECK(utils::zeros(1 << 30) == 1);
+  BOOST_CHECK(utils::zeros(1 << 10) == 21);
+  BOOST_CHECK(utils::zeros(101 << 29) == 0);
+}
+
 
 
 
