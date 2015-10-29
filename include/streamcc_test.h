@@ -11,6 +11,7 @@
 #include "streamcc_headers/CountSketch_basic.h"
 #include "streamcc_headers/Hash.h"
 #include "streamcc_headers/utils.hpp"
+#include "streamcc_headers/DistinctCounter.hpp"
 
 
 
