@@ -16,7 +16,7 @@ namespace utils {
 
 
 
-  //! return number of tailing zeros
+  //! return number of leading zeros of x
   uint32_t zeros(uint32_t x);
 
 
