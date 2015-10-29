@@ -3,9 +3,10 @@
 #include "streamcc_headers/Sampling.hpp"
 #include "streamcc_headers/CountMin.hpp"
 #include "streamcc_headers/CountSketch.hpp"
+#include "streamcc_headers/MisraGries.hpp"
 #ifdef ARMA
   #include "streamcc_headers/SieveStreaming.hpp"
-  #include "streamcc_headers/CVector.hpp"
+  // #include "streamcc_headers/CVector.hpp"
 #endif
 
 

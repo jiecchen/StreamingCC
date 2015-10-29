@@ -46,11 +46,11 @@ void test_CSieveStreaming() {
       arma::vec c({centers[i] + ns});
       stream.push_back(c);
     }
-  }
     
   Scc::CSieveStreaming<Scc::SieveKnowOptIVM> sv(10, 0.05, 0);
-  for (auto &item: stream)
+  for (auto &item: stream) {
     sv.update(item);
+  }
   Scc::Vectors &&ans = sv.getCenters(); 
   printVectors(ans);
 }
