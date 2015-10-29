@@ -39,7 +39,7 @@ void test_CSieveStreaming() {
   }
 
   Scc::Vectors stream;
-  Gaussian gauss(0, 1);
+  utils::Gaussian gauss(0, 1);
   for (auto i : centers)
     for (int j = 0; j < N; ++j) {
       double ns = gauss.rand();

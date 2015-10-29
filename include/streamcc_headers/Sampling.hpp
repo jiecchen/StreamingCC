@@ -46,7 +46,7 @@ namespace Scc {
       else {
 	double t = weight / totWeight;
 	for (auto &sp: samples)
-	  if (rand_double() < t)
+	  if (utils::rand_double() < t)
 	    sp = item;
       }
     };
@@ -58,7 +58,7 @@ namespace Scc {
 	samples.push_back(item);
       }
       else {
-	int p = rand_int((int) totWeight);
+	int p = utils::rand_int((int) totWeight);
 	if (p < nSamples)
 	  samples[p] = item;
       }    

@@ -195,7 +195,7 @@ namespace Scc {
       // when m needs to be updated
       if (this->m < f_item) {
 	this->m = f_item;
-	double c = find_closest(1 + this->eps, this->m);
+	double c = utils::find_closest(1 + this->eps, this->m);
 	// drop all instances with opt_est < c
 	while (this->O.size() > 0 && O[0].getOptEst() < c) 
 	  O.pop_front();      
