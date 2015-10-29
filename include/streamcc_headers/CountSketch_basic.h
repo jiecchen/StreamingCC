@@ -1,4 +1,11 @@
-// Copyright (C) 2015 by Jiecao Chen (chenjiecao@gmail.com)
+/**
+ @file CountSketch_basic.h
+ @author Jiecao Chen <chenjiecao@gmail.com>
+
+ Header file of class `CountSketch_basic`,
+ which can only handle integer stream
+*/
+ 
 
 #ifndef __COUNT_SKETCH_BASIC_H__
 #define __COUNT_SKETCH_BASIC_H__
@@ -9,6 +16,7 @@
 
 namespace Scc {
 
+  //! `Buffer` type
   typedef std::vector<ItemType> Buffer;
 
 

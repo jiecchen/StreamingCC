@@ -1,3 +1,10 @@
+/**
+   @file streamcc
+   @author Jiecao Chen (chenjiecao@gmail.com)
+   
+   Only need to include this header to use StreamingCC
+*/
+
 #ifndef __STREAMCC__
 #define __STREAMCC__
 #include "streamcc_headers/Sampling.hpp"
@@ -6,7 +13,6 @@
 #include "streamcc_headers/MisraGries.hpp"
 #ifdef ARMA
   #include "streamcc_headers/SieveStreaming.hpp"
-  // #include "streamcc_headers/CVector.hpp"
 #endif
 
 

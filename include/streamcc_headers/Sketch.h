@@ -1,4 +1,9 @@
-/* Copyright (C) 2015 by Jiecao Chen (chenjiecao@gmail.com) */
+/**
+    @file Sketch.h
+    @author Jiecao Chen (chenjiecao@gmail.com)
+
+    This file defines an abstract class for Sketches
+*/
 
 #ifndef __SKETCH_H__
 #define __SKETCH_H__
