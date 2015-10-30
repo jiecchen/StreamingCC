@@ -1,20 +1,17 @@
-/* Copyright (C) 2015 by Jiecao Chen (chenjiecao@gmail.com) */
-
 #ifndef __COUNT_MIN_BASIC_H__
 #define __COUNT_MIN_BASIC_H__
 #include <vector>
-#include "config.h"
 #include "Sketch.h"
 
 
-namespace Scc {
+namespace SccAux {
 
-  //! Buffer of ItemType
-  typedef std::vector<ItemType> Buffer;
+  //! Buffer of int
+  typedef std::vector<int> Buffer;
 
 
-  //! CountMin_basic only process ItemType (aka int) stream, weight must be non-negative
-  class CountMin_basic: public Sketch<ItemType> {
+  //! CountMin_basic only process integer stream, weight must be non-negative
+  class CountMin_basic: public Scc::Sketch<int> {
   private:
     int m; // size of each buffer
     int d; // # of copies of buffer
@@ -26,9 +23,9 @@ namespace Scc {
 		   int _d=20 //!< number of buffers
 		   );
     //! process a given (weighted) item
-    void processItem(const ItemType &item, double weight=1);
+    void processItem(const int &item, double weight=1);
     //! return estimation of total weight of the given item
-    double estTotWeight(const ItemType &item);
+    double estTotWeight(const int &item);
   };
 
 }

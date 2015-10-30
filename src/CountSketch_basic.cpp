@@ -8,11 +8,11 @@
 #include <algorithm>
 #include <functional>
 
-using namespace Scc;
 
 
 
-CountSketch_basic::CountSketch_basic(int _m, int _d):
+
+SccAux::CountSketch_basic::CountSketch_basic(int _m, int _d):
   m(_m), d(_d) {
   srand(time(NULL));
   for (int i = 0; i < d; ++i) {
@@ -24,7 +24,7 @@ CountSketch_basic::CountSketch_basic(int _m, int _d):
 
 
 
-void CountSketch_basic::processItem(const ItemType &item, double weight) {
+void SccAux::CountSketch_basic::processItem(const int &item, double weight) {
   for (int i = 0; i < d; ++i) {
     int p = murmurhash(&item, seeds[i]) % m;
     int sign = murmurhash(&item, sign_seeds[i]) % 2;
@@ -32,7 +32,7 @@ void CountSketch_basic::processItem(const ItemType &item, double weight) {
   }
 }
 
-double CountSketch_basic::estTotWeight(const ItemType &item) {
+double SccAux::CountSketch_basic::estTotWeight(const int &item) {
   double values[d];
   for (int i = 0; i < d; ++i) {
     int p = murmurhash(&item, seeds[i]) % m;

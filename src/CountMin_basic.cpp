@@ -8,11 +8,10 @@
 #include <algorithm>
 #include <functional>
 
-using namespace Scc;
 
 
 
-CountMin_basic::CountMin_basic(int _m, int _d):
+SccAux::CountMin_basic::CountMin_basic(int _m, int _d):
   m(_m), d(_d) {
   srand(time(NULL));
   for (int i = 0; i < d; ++i) {
@@ -23,14 +22,14 @@ CountMin_basic::CountMin_basic(int _m, int _d):
 
 
 
-void CountMin_basic::processItem(const ItemType &item, double weight) {
+void SccAux::CountMin_basic::processItem(const int &item, double weight) {
   for (int i = 0; i < d; ++i) {
     int p = murmurhash(&item, seeds[i]) % m;
     d_buf[i][p] += weight;
   }
 }
 
-double CountMin_basic::estTotWeight(const ItemType &item) {
+double SccAux::CountMin_basic::estTotWeight(const int &item) {
   double values[d];
   for (int i = 0; i < d; ++i) {
     int p = murmurhash(&item, seeds[i]) % m;

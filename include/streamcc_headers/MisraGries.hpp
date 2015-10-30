@@ -1,6 +1,6 @@
 /**
    @file MisraGries.hpp
-   @author Jiecao Chen (chenjiecao@gmail.com)
+   @author Jiecao Chen <chenjiecao@gmail.com>
    
    This file implements the class template for Misra-Gries algorithm.
 */
@@ -16,12 +16,12 @@ namespace Scc {
   //! Class template for Misra-Gries algorithm
 
   /**
-     Misra-Gries algorithm with parameter k (buffer size)
+     Misra-Gries algorithm with parameter \f$k\f$ (buffer size)
      can be used to find heavy hitters whose frequencies are
-     larger than n/k, here n is the total number of items.
+     larger than \f$\frac{n}{k}\f$, here \f$n\f$ is the total number of items.
 
      For any item, Misra-Gries also gives an estimation of
-     its frequency with error bounded by n/k.
+     its frequency with error bounded by \f$\frac{n}{k}\f$.
   */
   template <typename T>
   class MisraGries: public Sketch<T> {
@@ -72,7 +72,9 @@ namespace Scc {
     }
 
   };
-  
+  /**
+     @example MisraGries_Example.cpp
+  */
 }
 
 #endif
