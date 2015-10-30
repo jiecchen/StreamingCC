@@ -35,6 +35,7 @@ double utils::Gaussian::rand() {
   return dist(gen);
 }
 
+//! adapted from [blog](http://embeddedgurus.com/state-space/2014/09/fast-deterministic-and-portable-counting-leading-zeros/)
 uint32_t utils::zeros(uint32_t x) {
   static uint8_t const clz_lkup[] = {
     32U, 31U, 30U, 30U, 29U, 29U, 29U, 29U,
