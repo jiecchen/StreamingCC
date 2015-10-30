@@ -27,6 +27,7 @@ include_directories( ../include)
 add_executable(test test.cpp)
 add_executable(sv CSieveStreaming_Example.cpp)
 add_executable(mg MisraGries_Example.cpp)
+add_executable(f0 DistinctCounter_Example.cpp)
 # check if Armadillo exists
 find_package(Armadillo REQUIRED)
 if (ARMADILLO_FOUND)
@@ -38,4 +39,5 @@ else (ARMADILLO_FOUND)
   target_link_libraries(sv ${PROJECT_LINK_LIBS})
 endif (ARMADILLO_FOUND)
 target_link_libraries(mg ${PROJECT_LINK_LIBS})
+target_link_libraries(f0 ${PROJECT_LINK_LIBS})
 
