@@ -51,7 +51,10 @@ namespace Scc {
       //    std::cerr << item << " -> " << hash_fn(item) << std::endl;
       return csb.estTotWeight(hash_fn(item));
     }
-  
+
+    /**
+       @example CountSketch_Example.cpp
+    */
   };
 
 }

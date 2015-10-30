@@ -32,7 +32,7 @@ void test_CountMin() {
 }
 
 void test_CountSketch() {
-  CountMin_basic cs(10, 5);
+  CountMin<int> cs(10, 5);
   std::discrete_distribution<int> dist {100, 5, 5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
   std::map<int, int> real;
 

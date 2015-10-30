@@ -45,6 +45,10 @@ namespace Scc {
       return cmb.estTotWeight(hash_fn(item));
     }
   
+    /**
+       @example CountMin_Example.cpp
+    */
+
   };
 } // end namespace
 #endif
