@@ -10,7 +10,6 @@
 #define __HASH_HPP__ 
 
 #include <stdint.h>
-#include "config.h"
 
 #define MURMURHASH_VERSION "0.0.3"
 
