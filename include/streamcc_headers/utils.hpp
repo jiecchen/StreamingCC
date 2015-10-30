@@ -2,7 +2,7 @@
  @file utils.hpp
  @author Jiecao Chen <chenjiecao@gmail.com>
 
- Provide utility functions, all functions are group under utils::
+ Provide utility functions, all functions are grouped under utils::
 */
 
 
