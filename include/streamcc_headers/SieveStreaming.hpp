@@ -157,6 +157,11 @@ namespace Scc {
     };
 
     ~SieveKnowOptIVM() {};
+
+    /**
+       @example CSieveStreaming_Example.cpp
+    */
+
   };
 
 
@@ -245,6 +250,9 @@ namespace Scc {
     };  
   };
 
+  /**
+     @example CSieveStreaming_Example.cpp
+  */
 };
 
 #endif
