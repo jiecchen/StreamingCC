@@ -20,10 +20,11 @@
 #include <map>
 #include <set>
 #include <vector>
-
+#include <algorithm>
 
 
 namespace SccAux {
+  //! BJKST-Sketch with constant success probability - internal use only
   template <typename T>
   class BJKST_basic: public Scc::Sketch<T> {
   private:
@@ -68,12 +69,53 @@ namespace SccAux {
 }
 
 
-// namespace Scc {
-//   template <typename T>
-//   class DistinctCounter: public Sketch<T> {
-    
-//   };
-// }
+namespace Scc {
+
+
+
+
+  //! Class template to count number of distinct elements over a data stream
+  /**
+   * The relative error of the estimation is bounded by \f$\frac{1}{\sqrt{\text{buf_size}}}\f$.
+   * Success probility is at least \f$1 - 2^{-d}\f$
+   */
+
+  template <typename T>
+  class DistinctCounter: public Sketch<T> {
+  private:
+    std::vector<SccAux::BJKST_basic<T>> bjkst;
+  public:
+    //! Constructor
+    DistinctCounter(int buf_size, //!< size of each buffer
+		    int d=20 //!< number of buffers, success prob is at least \f$(1 - 2^{-d})\f$
+		    ) {
+      // create d independent BJKST sketches
+      for (int i = 0; i < d; ++i)
+	bjkst.push_back(SccAux::BJKST_basic<T>(buf_size));
+    }
+
+    void processItem(const T &item, double weight=1.) {      
+      for (auto &s : bjkst) 
+	s.processItem(item);
+    }
+
+    //! return estimation of number of distinct elements
+    int getEstDistinct() {
+      int F0[bjkst.size()];
+      for (size_t i = 0; i < bjkst.size(); ++i)
+	F0[i] = bjkst[i].getEstDistinct();
+      // get the median
+      int d = bjkst.size();
+      std::nth_element(F0, F0 + d / 2, F0 + d);
+      return F0[d / 2];
+    }
+  };
+  /**
+     @example DistinctCounter_Example.cpp
+  */
+
+}
+
 #endif
 
 
