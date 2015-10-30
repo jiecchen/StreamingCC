@@ -1,3 +1,11 @@
+/**
+ @file utils.hpp
+ @author Jiecao Chen <chenjiecao@gmail.com>
+
+ Provide utility functions, all functions are group under utils::
+*/
+
+
 #ifndef __UTILS_HPP__
 #define __UTILS_HPP__
 #include <random>

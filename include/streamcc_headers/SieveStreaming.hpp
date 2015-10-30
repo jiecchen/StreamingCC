@@ -1,3 +1,14 @@
+/**
+ @file SieveStreaming.hpp
+ @author Jiecao Chen <chenjiecao@gmail.com>
+
+ This file implements a framework that do optimiation for
+ monotone submodular function over data stream.
+ 
+ See [Streaming Submodular Maximization:
+Massive Data Summarization on the Fly](http://las.ethz.ch/files/badanidiyuru14streaming.pdf) (KDD'14).
+*/
+
 #ifndef __SIEVE_STREAMING_HPP__
 #define __SIEVE_STREAMING_HPP__
 #include <cmath>

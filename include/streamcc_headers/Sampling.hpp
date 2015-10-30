@@ -1,4 +1,10 @@
-/* Copyright (C) 2015 by Jiecao Chen (chenjiecao@gmail.com) */
+/**
+ @file Sampling.hpp
+ @author Jiecao Chen <chenjiecao@gmail.com>
+
+ This file implements algorithms that support sampling from data streams
+*/
+
 
 #ifndef __SAMPLING_HPP__
 #define  __SAMPLING_HPP__

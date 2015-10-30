@@ -1,3 +1,11 @@
+/**
+ @file CountMin_basic.h
+ @author Jiecao Chen <chenjiecao@gmail.com>
+
+ Header file of class CountMin_basic, which can only handle integer stream
+ with positive weights
+*/
+
 #ifndef __COUNT_MIN_BASIC_H__
 #define __COUNT_MIN_BASIC_H__
 #include <vector>
