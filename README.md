@@ -21,7 +21,8 @@ Algorithms/Data Structures included in `StreamingCC`:
 
 
 ## Documentation
-See [xmerge.me/StreamingCC](http://xmerge.me/StreamingCC/).
+See [StreamingCC](http://xmerge.me/StreamingCC/) to get started.
+See [API Docs](xmerge.me/StreamingCC-api) to dive straight into API.
 
 ## Dependencies
 + CMake (>= 2.8.9)
