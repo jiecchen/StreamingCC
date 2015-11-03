@@ -30,6 +30,7 @@ add_executable(mg MisraGries_Example.cpp)
 add_executable(f0 DistinctCounter_Example.cpp)
 add_executable(count_min CountMin_Example.cpp)
 add_executable(count_sketch CountSketch_Example.cpp)
+add_executable(f2 F2_Example.cpp)
 # check if Armadillo exists
 find_package(Armadillo REQUIRED)
 if (ARMADILLO_FOUND)
@@ -44,4 +45,5 @@ target_link_libraries(mg ${PROJECT_LINK_LIBS})
 target_link_libraries(f0 ${PROJECT_LINK_LIBS})
 target_link_libraries(count_min ${PROJECT_LINK_LIBS})
 target_link_libraries(count_sketch ${PROJECT_LINK_LIBS})
+target_link_libraries(f2 ${PROJECT_LINK_LIBS})
 
