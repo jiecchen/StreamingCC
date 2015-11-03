@@ -2,7 +2,7 @@
    @file F2_Example.cpp
    @author Jiecao Chen <chenjiecao@gmail.com>
    
-   This file gives a example of estimating 2rd
+   This file gives a example of estimating 2nd
    moment of the frequency vector of a weighted
    data stream using class `F2`
 */

@@ -48,7 +48,7 @@ namespace SccAux {
       }
     }
 
-    //! get estimated 2rd moment
+    //! get estimated 2nd moment
     double getEstF2() {
       double tot = 0.;
       for (auto x: counters)
@@ -61,16 +61,16 @@ namespace SccAux {
 }
 
 namespace Scc {
-  //! Class for estimating the 2rd frequency moment of a weighted data stream
+  //! Class for estimating the 2nd frequency moment of a weighted data stream
   /**
-     The 2nd moment of a vector \f$x\f$ is defined as \f$\|\textbf{x}\|_2^2\f$.
+     The 2nd moment of a vector \f$\textbf{x}\f$ is defined as \f$\|\textbf{x}\|_2^2\f$.
      The 2nd moment of frequency vector of a data stream can be used to mearsure
      how skew the data is.
      
      This class works for weighted data stream as well (i.e. you can assign a weight for each item).
      When weight is omitted, \f$1\f$ is used by default.
      
-     The relative error of estimation is bounded by \f$\frac{1}{\sqrt{buf_size}}\f$.
+     The relative error of estimation is bounded by \f$\frac{1}{\sqrt{buf\_size}}\f$.
      Success probability is at least \f$1 - 2^{-d}\f$.
   */
   template <typename T>
@@ -92,7 +92,7 @@ namespace Scc {
       }
     }
     
-    //! get estimated 2rd moment
+    //! get estimated 2nd moment
     double getEstF2() {
       auto d = estimators.size();
       double est[d];
@@ -104,7 +104,7 @@ namespace Scc {
   };
 
   /**
-     @example F2_Example.hpp
+     @example F2_Example.cpp
   */
 
 }
