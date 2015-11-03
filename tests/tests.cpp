@@ -61,6 +61,31 @@ BOOST_AUTO_TEST_CASE(DistinctCounter_Test) {
   BOOST_CHECK(estF0 > 10000 * 0.9);  
 }
 
+
+BOOST_AUTO_TEST_CASE(F2_Test) {
+  std::discrete_distribution<int> dist {100, 5, 5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
+  std::map<int, double> real; // to keep the actual frequencies
+
+  Scc::F2<int> f2(50);
+  for (int i = 0; i < 10000; ++i) {
+    int item = dist(gen);
+    double weight = utils::rand_double();
+    f2.processItem(item, weight);
+    real[item] += weight;
+  }
+
+  // calc the actual F2
+  double r = 0.;
+  for (auto p: real) {
+    r += p.second * p.second;
+  }
+  
+  auto est = f2.getEstF2();
+  BOOST_CHECK(est < 1.1 * r);
+  BOOST_CHECK(est > 0.9 * r);
+    
+}
+
 BOOST_AUTO_TEST_CASE(Zeros_Test) {
   BOOST_CHECK(utils::zeros(1 << 30) == 1);
   BOOST_CHECK(utils::zeros(1 << 10) == 21);
