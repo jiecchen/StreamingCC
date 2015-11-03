@@ -12,6 +12,7 @@
 #include "streamcc_headers/Hash.h"
 #include "streamcc_headers/utils.hpp"
 #include "streamcc_headers/DistinctCounter.hpp"
+#include "streamcc_headers/F2.hpp"
 
 
 

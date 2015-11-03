@@ -12,6 +12,7 @@
 #include "streamcc_headers/CountSketch.hpp"
 #include "streamcc_headers/MisraGries.hpp"
 #include "streamcc_headers/DistinctCounter.hpp"
+#include "streamcc_headers/F2.hpp"
 
 #ifdef ARMA
   #include "streamcc_headers/SieveStreaming.hpp"
