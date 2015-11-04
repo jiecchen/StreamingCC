@@ -2,7 +2,7 @@ StreamingCC
 ----------------------
 A C++ template library for summarizing data streams.
 
-[![TravisCI](https://travis-ci.org/jiecchen/StreamingCC.svg?branch=master)]
+[![TravisCI](https://travis-ci.org/jiecchen/StreamingCC.svg?branch=master)](https://travis-ci.org/jiecchen/StreamingCC)
 
 ## Algorithms
 `StreamingCC` implements various [streaming algorithms](https://en.wikipedia.org/wiki/Streaming_algorithm) and [probabilistic data structures](https://en.wikipedia.org/wiki/Category:Probabilistic_data_structures). They can be used to effectively summarize the data stream even when data is too large to fit into memory.
