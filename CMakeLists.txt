@@ -1,4 +1,4 @@
-# cmake_minimum_required(VERSION 2.8.)
+cmake_minimum_required(VERSION 2.8.7)
 project(StreamingCC)
 set(CMAKE_BUILD_TYPE Release)
 
@@ -43,30 +43,32 @@ install(FILES ${INCLUDES} DESTINATION /usr/local/include/streamcc_headers)
 enable_testing()
 
 #Prep ourselves for compiling boost
-find_package(Boost COMPONENTS unit_test_framework REQUIRED)
-include_directories (${Boost_INCLUDE_DIRS})
+find_package(Boost COMPONENTS unit_test_framework)
+if (Boost_FOUND)
+  include_directories (${Boost_INCLUDE_DIRS})
 
-#I like to keep test files in a separate source directory called test
-file(GLOB TEST_SRCS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} tests/*.cpp)
+  #I like to keep test files in a separate source directory called test
+  file(GLOB TEST_SRCS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} tests/*.cpp)
 
-#Run through each source
-foreach(testSrc ${TEST_SRCS})
-        #Extract the filename without an extension (NAME_WE)
-        get_filename_component(testName ${testSrc} NAME_WE)
+  #Run through each source
+  foreach(testSrc ${TEST_SRCS})
+    #Extract the filename without an extension (NAME_WE)
+    get_filename_component(testName ${testSrc} NAME_WE)
 
-        #Add compile target
-        add_executable(${testName} ${testSrc})
+    #Add compile target
+    add_executable(${testName} ${testSrc})
 
-        #link to Boost libraries AND your targets and dependencies
-        target_link_libraries(${testName} ${Boost_LIBRARIES} "streamcc")
+    #link to Boost libraries AND your targets and dependencies
+    target_link_libraries(${testName} ${Boost_LIBRARIES} "streamcc")
 
-        #I like to move testing binaries into a testBin directory
-        set_target_properties(${testName} PROPERTIES 
-            RUNTIME_OUTPUT_DIRECTORY  ${CMAKE_CURRENT_SOURCE_DIR}/testBin)
-
-        #Finally add it to test execution - 
-        #Notice the WORKING_DIRECTORY and COMMAND
-        add_test(NAME ${testName} 
-                 WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/testBin 
-                 COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/testBin/${testName} )
-endforeach(testSrc)
+    #I like to move testing binaries into a testBin directory
+    set_target_properties(${testName} PROPERTIES 
+      RUNTIME_OUTPUT_DIRECTORY  ${CMAKE_CURRENT_SOURCE_DIR}/testBin)
+    
+    #Finally add it to test execution - 
+    #Notice the WORKING_DIRECTORY and COMMAND
+    add_test(NAME ${testName} 
+      WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/testBin 
+      COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/testBin/${testName} )
+  endforeach(testSrc)
+endif()
