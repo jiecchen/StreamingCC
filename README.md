@@ -2,7 +2,7 @@ StreamingCC
 ----------------------
 A C++ template library for summarizing data streams.
 
-[![TravisCI](https://travis-ci.org/jiecchen/StreamingCC.svg?branch=master)](https://travis-ci.org/jiecchen/StreamingCC.svg?branch=master)
+[![TravisCI](https://travis-ci.org/jiecchen/StreamingCC.svg?branch=master)]
 
 ## Algorithms
 `StreamingCC` implements various [streaming algorithms](https://en.wikipedia.org/wiki/Streaming_algorithm) and [probabilistic data structures](https://en.wikipedia.org/wiki/Category:Probabilistic_data_structures). They can be used to effectively summarize the data stream even when data is too large to fit into memory.
@@ -27,7 +27,7 @@ Algorithms/Data Structures included in `StreamingCC`:
 + See [API Docs](http://xmerge.me/StreamingCC-api) to dive straight into API.
 
 ## Dependencies
-+ CMake (>= 2.8.9)
++ CMake (>= 2.8.7)
 + C++11 support required
 + [Armadillo](http://arma.sourceforge.net/) (optional, required by some features)
 
