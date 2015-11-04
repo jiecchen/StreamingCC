@@ -1,0 +1,12 @@
+language: cpp
+compiler:
+  - g++
+  - clang
+script: cmake . && make && make test
+notifications:
+  email:
+    recipients:
+      - jiecchen@indiana.edu
+      - chenjiecao@gmail.com
+    on_success: change
+    on_failure: always
