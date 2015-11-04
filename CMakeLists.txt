@@ -39,12 +39,13 @@ install(FILES ${INCLUDES} DESTINATION /usr/local/include/streamcc_headers)
 
 
 
-#Setup CMake to run tests
-enable_testing()
 
 #Prep ourselves for compiling boost
 find_package(Boost COMPONENTS unit_test_framework)
 if (Boost_FOUND)
+  #Setup CMake to run tests
+  enable_testing()
+
   include_directories (${Boost_INCLUDE_DIRS})
 
   #I like to keep test files in a separate source directory called test
