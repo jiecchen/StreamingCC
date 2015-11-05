@@ -90,7 +90,7 @@ namespace Scc {
 
 
   //! Gaussion kernel function, can be override to support other kernel
-  double K(const arma::vec &v1, const arma::vec &v2, double h = 100.) {
+  static double K(const arma::vec &v1, const arma::vec &v2, double h = 100.) {
     double d = arma::norm(v1 - v2, 2);
     return std::exp(- d * d / h);
   }
@@ -101,7 +101,7 @@ namespace Scc {
   /**
      k(S) is the kernal matrix of set S
   */
-  double log_det_IVM(const Vectors &S, double sigma=1.) {
+  static double log_det_IVM(const Vectors &S, double sigma=1.) {
     arma::mat tmp = arma::eye<arma::mat>(S.size(), S.size());
     for (size_t i = 0; i < S.size(); ++i)
       for (size_t j = 0; j < S.size(); ++j)
@@ -204,7 +204,7 @@ namespace Scc {
 
 
     //! update internal states when a new item comes
-    void update(arma::vec& item) {
+    void update(const arma::vec& item) {
       // estimate f({item})
       double f_item = svPtr->marginal_gain(item);
     

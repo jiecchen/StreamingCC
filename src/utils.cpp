@@ -4,16 +4,6 @@
 #include <stdint.h>
 
 
-namespace utils {
-  const int MAX = 1 << 30;
-  std::random_device rd;
-  std::mt19937 gen(rd());
-  std::uniform_real_distribution<> dis(0, 1);
-  std::default_random_engine generator;
-  std::uniform_int_distribution<> dis_int(0, MAX);  
-}
-
-
 
 int utils::rand_int(int M) {
   return dis_int(gen) % M;

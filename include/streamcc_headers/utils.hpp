@@ -13,6 +13,13 @@
 
 
 namespace utils {
+  static const int MAX = 1 << 30;
+  static std::random_device rd;
+  static std::mt19937 gen(rd());
+  static std::uniform_real_distribution<> dis(0, 1);
+  static std::default_random_engine generator;
+  static std::uniform_int_distribution<> dis_int(0, MAX);  
+
 
   //! randomly return from 0, 1, 2, ..., M-1
   int rand_int(int M=1 << 30);
@@ -38,7 +45,8 @@ namespace utils {
     //! return a random number ~ N(m, sig)
     double rand();
   };
-}
+
+};
 
 
 
