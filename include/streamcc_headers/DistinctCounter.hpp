@@ -43,24 +43,7 @@ namespace SccAux {
             seed_g = utils::rand_int();
         }
 
-        void processItem(const T &item, double weight = 1.) {
-            int j = hash_fn(item);
-            uint32_t h = murmurhash(&j, seed_h);
-            int lzeros = utils::zeros(h);
-            if (lzeros >= z) {
-                uint32_t g = murmurhash(&j, seed_g);
-                buf.insert(std::make_pair(g, lzeros));
-            }
-            // shrank buffer
-            while (buf.size() >= buf_size) {
-                z++;
-                auto buf_cp = buf;
-                for (auto &p : buf_cp) {
-                    if (p.second < z)
-                        buf.erase(p);
-                }
-            }
-        }
+        void processItem(const T &item, double weight = 1.);
 
         //! return estimation of number of distinct elements
         int getEstDistinct() {
@@ -78,7 +61,7 @@ namespace Scc {
     //! Class template to count number of distinct elements over a data stream
     /**
      * The relative error of the estimation is bounded by \f$\frac{1}{\sqrt{\text{buf_size}}}\f$.
-     * Success probility is at least \f$1 - 2^{-d}\f$
+     * Success probability is at least \f$1 - 2^{-d}\f$
      */
 
     template<typename T>
@@ -101,20 +84,50 @@ namespace Scc {
         }
 
         //! return estimation of number of distinct elements
-        int getEstDistinct() {
-            int F0[bjkst.size()];
-            for (size_t i = 0; i < bjkst.size(); ++i)
-                F0[i] = bjkst[i].getEstDistinct();
-            // get the median
-            int d = bjkst.size();
-            std::nth_element(F0, F0 + d / 2, F0 + d);
-            return F0[d / 2];
-        }
+        int getEstDistinct();
     };
     /**
        @example DistinctCounter_Example.cpp
     */
 
+}
+
+
+
+//////////////////////////////////////////////////////////
+///////////////// Implementation /////////////////////////
+//////////////////////////////////////////////////////////
+
+template <typename T>
+void SccAux::BJKST_basic<T>::processItem(const T &item, double weight) {
+    int j = hash_fn(item);
+    uint32_t h = murmurhash(&j, seed_h);
+    int lzeros = utils::zeros(h);
+    if (lzeros >= z) {
+        uint32_t g = murmurhash(&j, seed_g);
+        buf.insert(std::make_pair(g, lzeros));
+    }
+    // shrank buffer
+    while (buf.size() >= buf_size) {
+        z++;
+        auto buf_cp = buf;
+        for (auto &p : buf_cp) {
+            if (p.second < z)
+                buf.erase(p);
+        }
+    }
+}
+
+
+template <typename T>
+int Scc::DistinctCounter<T>::getEstDistinct() {
+    int F0[bjkst.size()];
+    for (size_t i = 0; i < bjkst.size(); ++i)
+        F0[i] = bjkst[i].getEstDistinct();
+    // get the median
+    int d = bjkst.size();
+    std::nth_element(F0, F0 + d / 2, F0 + d);
+    return F0[d / 2];
 }
 
 #endif
