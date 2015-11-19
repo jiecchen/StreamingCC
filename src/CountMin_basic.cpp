@@ -1,6 +1,6 @@
 // Copyright (C) 2015 by Jiecao Chen (chenjiecao@gmail.com)
 
-#include "../include/streamcc_headers/CountMin_basic.h"
+#include "../include/streamcc_headers/CountMin_basic.hpp"
 #include "../include/streamcc_headers/Hash.h"
 #include <vector>
 #include <cstdlib>

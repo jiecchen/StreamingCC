@@ -10,7 +10,7 @@
 #define __COUNT_SKETCH_H__
 
 #include "Sketch.hpp"
-#include "CountSketch_basic.h"
+#include "CountSketch_basic.hpp"
 #include <functional>
 #include <iostream>
 
