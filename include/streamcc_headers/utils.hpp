@@ -22,7 +22,7 @@ namespace utils {
 
 
   //! randomly return from 0, 1, 2, ..., M-1
-  int rand_int(int M=1 << 30);
+  uint32_t rand_int(int M=1 << 30);
   
   double find_closest(double a, double b);
 

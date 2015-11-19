@@ -8,7 +8,7 @@
 
 #ifndef __SAMPLING_HPP__
 #define  __SAMPLING_HPP__
-#include "Sketch.h"
+#include "Sketch.hpp"
 #include <vector>
 #include "utils.hpp"
 #include <cmath>

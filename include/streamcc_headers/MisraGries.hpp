@@ -8,7 +8,7 @@
 #ifndef __MISRA_GRIES_HPP__
 #define __MISRA_GRIES_HPP__
 
-#include "Sketch.h"
+#include "Sketch.hpp"
 #include <map>
 #include <vector>
 

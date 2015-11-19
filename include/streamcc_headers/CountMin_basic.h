@@ -9,7 +9,7 @@
 #ifndef __COUNT_MIN_BASIC_H__
 #define __COUNT_MIN_BASIC_H__
 #include <vector>
-#include "Sketch.h"
+#include "Sketch.hpp"
 
 
 namespace SccAux {

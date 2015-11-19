@@ -8,7 +8,7 @@
 
 #ifndef __COUNT_MIN_H__
 #define __COUNT_MIN_H__
-#include "Sketch.h"
+#include "Sketch.hpp"
 #include "CountMin_basic.h"
 #include <functional>
 #include <iostream>

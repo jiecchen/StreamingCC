@@ -12,7 +12,7 @@
 
 #ifndef __F2_HPP__
 #define __F2_HPP__
-#include "Sketch.h"
+#include "Sketch.hpp"
 #include "utils.hpp"
 #include <vector>
 #include <functional>

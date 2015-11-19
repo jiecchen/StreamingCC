@@ -11,7 +11,7 @@
 
 #ifndef __DISTINCT_HPP__
 #define __DISTINCT_HPP__
-#include "Sketch.h"
+#include "Sketch.hpp"
 #include "utils.hpp"
 #include "Hash.h"
 #include <stdint.h>

@@ -8,7 +8,7 @@
 
 #ifndef __COUNT_SKETCH_H__
 #define __COUNT_SKETCH_H__
-#include "Sketch.h"
+#include "Sketch.hpp"
 #include "CountSketch_basic.h"
 #include <functional>
 #include <iostream>
