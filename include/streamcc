@@ -7,6 +7,7 @@
 
 #ifndef __STREAMCC__
 #define __STREAMCC__
+
 #include "streamcc_headers/Sampling.hpp"
 #include "streamcc_headers/CountMin.hpp"
 #include "streamcc_headers/CountSketch.hpp"
@@ -15,9 +16,8 @@
 #include "streamcc_headers/F2.hpp"
 
 #ifdef ARMA
-  #include "streamcc_headers/SieveStreaming.hpp"
+#include "streamcc_headers/SieveStreaming.hpp"
 #endif
-
 
 
 #endif

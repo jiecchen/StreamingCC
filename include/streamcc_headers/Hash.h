@@ -7,12 +7,11 @@
  */
 
 #ifndef __HASH_HPP__
-#define __HASH_HPP__ 
+#define __HASH_HPP__
 
 #include <stdint.h>
 
 #define MURMURHASH_VERSION "0.0.3"
-
 
 
 /*!
