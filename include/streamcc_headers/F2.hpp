@@ -24,7 +24,7 @@
 namespace SccAux {
     //! Basic class for F2 estimator, internal use only
     template<typename T>
-    class F2_basic : Scc::Sketch<T> {
+    class F2_basic: Scc::Sketch<T> {
     private:
         std::vector<uint32_t> seeds;
         std::vector<double> counters;
@@ -32,25 +32,13 @@ namespace SccAux {
     public:
 
         //! Constructor
-
         F2_basic(int _buf_size //!< size of buffer
         );
 
-        void processItem(const T &item, double weight = 1.) {
-            int h = hash_fn(item);
-            for (size_t i = 0; i < seeds.size(); ++i) {
-                int sign = (murmurhash(&h, seeds[i]) % 2) * 2 - 1;
-                counters[i] += sign * weight;
-            }
-        }
+        void processItem(const T &item, double weight = 1.);
 
         //! get estimated 2nd moment
-        double getEstF2() {
-            double tot = 0.;
-            for (auto x: counters)
-                tot += x * x;
-            return tot / counters.size();
-        }
+        double getEstF2();
     };
 
 
@@ -77,26 +65,12 @@ namespace Scc {
         //! Constructor
         F2(int buf_size, //!< size of buffer
            int d = 20 //!< number of independent copies
-        ) {
-            for (int i = 0; i < d; ++i)
-                estimators.push_back(SccAux::F2_basic<T>(buf_size));
-        }
+        );
 
-        void processItem(const T &item, double weight = 1.) {
-            for (auto &est: estimators) {
-                est.processItem(item, weight);
-            }
-        }
+        void processItem(const T &item, double weight = 1.);
 
         //! get estimated 2nd moment
-        double getEstF2() {
-            auto d = estimators.size();
-            double est[d];
-            for (size_t i = 0; i < d; ++i)
-                est[i] = estimators[i].getEstF2();
-            std::nth_element(est, est + d / 2, est + d);
-            return est[d / 2];
-        }
+        double getEstF2();
     };
 
     /**
@@ -104,6 +78,10 @@ namespace Scc {
     */
 
 }
+
+//////////////////////////////////////////////////////
+/////// Implementation ///////////////////////////////
+//////////////////////////////////////////////////////
 
 template <typename T>
 SccAux::F2_basic<T>::F2_basic(int _buf_size) {
@@ -113,6 +91,51 @@ SccAux::F2_basic<T>::F2_basic(int _buf_size) {
         counters.push_back(0);
     }
 }
+
+
+template <typename T>
+void SccAux::F2_basic<T>::processItem(const T &item, double weight) {
+    int h = hash_fn(item);
+    for (size_t i = 0; i < seeds.size(); ++i) {
+        int sign = (murmurhash(&h, seeds[i]) % 2) * 2 - 1;
+        counters[i] += sign * weight;
+    }
+}
+
+
+template <typename T>
+double SccAux::F2_basic<T>::getEstF2() {
+    double tot = 0.;
+    for (auto x: counters)
+        tot += x * x;
+    return tot / counters.size();
+}
+
+
+
+template <typename T>
+Scc::F2<T>::F2(int buf_size, int d) {
+    for (int i = 0; i < d; ++i)
+        estimators.push_back(SccAux::F2_basic<T>(buf_size));
+}
+
+template <typename T>
+void Scc::F2<T>::processItem(const T &item, double weight) {
+    for (auto &est: estimators) {
+        est.processItem(item, weight);
+    }
+}
+
+template <typename T>
+double Scc::F2<T>::getEstF2() {
+    auto d = estimators.size();
+    double est[d];
+    for (size_t i = 0; i < d; ++i)
+        est[i] = estimators[i].getEstF2();
+    std::nth_element(est, est + d / 2, est + d);
+    return est[d / 2];
+}
+
 
 
 #endif
