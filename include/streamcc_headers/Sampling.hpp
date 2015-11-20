@@ -7,7 +7,7 @@
 
 
 #ifndef __SAMPLING_HPP__
-#define  __SAMPLING_HPP__
+#define __SAMPLING_HPP__
 
 #include "Sketch.hpp"
 #include <vector>
@@ -46,6 +46,7 @@ namespace Scc {
         bool withReplacementQ;
         int totWeight;
 
+        //! process item with replacement
         void processItem_withRpl(const T &item, double weight) {
             if (samples.size() == 0) {
                 for (int i = 0; i < nSamples; ++i)
@@ -59,8 +60,9 @@ namespace Scc {
             }
         };
 
-        //! TODO: for now, without_replacement version
+        // @todo for now, without_replacement version
         //        can only handle non-weighted sampling
+        //! process item without replacement
         void processItem_withoutRpl(const T &item) {
             if (samples.size() < nSamples) {
                 samples.push_back(item);
