@@ -36,8 +36,13 @@ Algorithms/Data Structures included in `StreamingCC`:
 The source code compiles to static library
 See [xmerge.me/StreamingCC](http://xmerge.me/StreamingCC/) for details.
 
-## Contributor(s)
-- jiecchen chenjiecao@gmail.com (Owner, supported by NSF CCF-1525024)
+## Credit
+### Maintainer
+- jiecchen <chenjiecao@gmail.com>
+### Other contributor(s)
+- Qin Zhang <qzhangcs@indiana.edu>
+### Acknowledgement
+This project is supported by NSF CCF-1525024
 
 ## License
 MIT License
