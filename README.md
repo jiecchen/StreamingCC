@@ -39,13 +39,10 @@ See [xmerge.me/StreamingCC](http://xmerge.me/StreamingCC/) for details.
 ## Credit
 
 ### Maintainer
-- jiecchen <chenjiecao@gmail.com>
+- Jiecao Chen <chenjiecao@gmail.com> (currently supported by NSF CCF-1525024)
 
 ### Other contributor(s)
 - Qin Zhang <qzhangcs@indiana.edu>
-
-### Acknowledgement
-This project is supported by NSF CCF-1525024
 
 ## License
 MIT License
