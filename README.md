@@ -37,10 +37,13 @@ The source code compiles to static library
 See [xmerge.me/StreamingCC](http://xmerge.me/StreamingCC/) for details.
 
 ## Credit
+
 ### Maintainer
 - jiecchen <chenjiecao@gmail.com>
+
 ### Other contributor(s)
 - Qin Zhang <qzhangcs@indiana.edu>
+
 ### Acknowledgement
 This project is supported by NSF CCF-1525024
 
