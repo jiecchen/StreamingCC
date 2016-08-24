@@ -17,7 +17,7 @@ F2Int::F2Int(const size_t bucket_size, const size_t num_copies) {
   }
 }
 
-void F2Int::ProcessItem(const ItemType item, const double weight) {
+void F2Int::ProcessItem(const uint32_t item, const double weight) {
   // TODO(jiecchen): make it run in parallel
   for (auto& f2basic : f2_basic) {
     f2basic.ProcessItem(item, weight);
@@ -41,7 +41,7 @@ F2BasicInt::F2BasicInt(const size_t bucket_size) {
   }
 }
 
-void F2BasicInt::ProcessItem(const ItemType item, const double weight) {
+void F2BasicInt::ProcessItem(const uint32_t item, const double weight) {
   for (size_t i = 0 ; i < random_seeds.size(); ++i) {
     int sign = (murmurhash(item, random_seeds[i]) % 2) * 2 - 1;
     buckets[i] += sign * weight;

@@ -11,15 +11,12 @@ namespace streamingcc {
 // under this namespace. All classes defined in this namespace, should
 // be named with "Int" suffix.
 namespace integer {
-// Alias of the unsigned int type, as the type of the items.
-using ItemType = uint32_t;
-
 
 // Interface for streaming algorithms for unweighted integer data stream.
 class StreamingAlgorithmInt {
  public:
   // Processes an item
-  virtual void ProcessItem(const ItemType item) = 0;
+  virtual void ProcessItem(const uint32_t item) = 0;
   virtual ~StreamingAlgorithmInt() {}
 };
 
@@ -27,7 +24,7 @@ class StreamingAlgorithmInt {
 class StreamingAlgorithmWeightedInt {
  public:
   // Processes an item
-  virtual void ProcessItem(const ItemType item, const double weight) = 0;
+  virtual void ProcessItem(const uint32_t item, const double weight) = 0;
   virtual ~StreamingAlgorithmWeightedInt() {}
 };
 
