@@ -15,29 +15,17 @@ else()
 endif()
 
 
-#Bring the headers, such as Student.h into the project
-include_directories(include)
-
 #However, the file(GLOB...) allows for wildcard additions:
-file(GLOB SOURCES "src/*.cpp")
-file(GLOB INCLUDES "include/streamcc_headers/*")
+file(GLOB SOURCES "src/*.cc")
+file(GLOB INCLUDES "src/streamingcc_include/*.h")
 #Generate the shared library from the sources
-add_library(streamcc STATIC ${SOURCES})
-
-
+add_library(streamingcc STATIC ${SOURCES})
 
 #Set the location for library installation -- i.e., /usr/lib in this case
 # not really necessary in this example. Use "sudo make install" to apply
-install(TARGETS streamcc DESTINATION /usr/lib)
-install(FILES include/streamcc DESTINATION /usr/local/include)
-install(FILES ${INCLUDES} DESTINATION /usr/local/include/streamcc_headers)
-
-
-
-
-
-
-
+install(TARGETS streamingcc DESTINATION /usr/lib)
+install(FILES src/streamingcc DESTINATION /usr/local/include)
+install(FILES ${INCLUDES} DESTINATION /usr/local/include/streamingcc_include)
 
 
 #Prep ourselves for compiling boost
@@ -49,7 +37,7 @@ if (Boost_FOUND)
   include_directories (${Boost_INCLUDE_DIRS})
 
   #I like to keep test files in a separate source directory called test
-  file(GLOB TEST_SRCS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} tests/*.cpp)
+  file(GLOB TEST_SRCS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} tests/*.cc)
 
   #Run through each source
   foreach(testSrc ${TEST_SRCS})
@@ -60,7 +48,7 @@ if (Boost_FOUND)
     add_executable(${testName} ${testSrc})
 
     #link to Boost libraries AND your targets and dependencies
-    target_link_libraries(${testName} ${Boost_LIBRARIES} "streamcc")
+    target_link_libraries(${testName} ${Boost_LIBRARIES} "streamingcc")
 
     #I like to move testing binaries into a testBin directory
     set_target_properties(${testName} PROPERTIES 
