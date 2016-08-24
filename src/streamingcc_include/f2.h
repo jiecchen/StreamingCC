@@ -25,8 +25,8 @@ class F2BasicInt: public StreamingAlgorithmWeightedInt {
   ~F2BasicInt() override {}
 
  private:
-  std::vector<uint32_t> random_seeds;
-  std::vector<double> buckets;
+  std::vector<uint32_t> random_seeds_;
+  std::vector<double> buckets_;
 };
 
 // A aggregated version of F2 sketch for integer data stream. The
@@ -44,7 +44,7 @@ class F2Int: public StreamingAlgorithmWeightedInt {
   ~F2Int() override {}
 
  private:
-  std::vector<F2BasicInt> f2_basic;
+  std::vector<F2BasicInt> f2_basic_;
 };
 
 

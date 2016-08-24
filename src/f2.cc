@@ -13,47 +13,47 @@ namespace integer {
 
 F2Int::F2Int(const size_t bucket_size, const size_t num_copies) {
   for (size_t i = 0; i < num_copies; ++i) {
-    f2_basic.push_back(F2BasicInt(bucket_size));
+    f2_basic_.push_back(F2BasicInt(bucket_size));
   }
 }
 
 void F2Int::ProcessItem(const uint32_t item, const double weight) {
   // TODO(jiecchen): make it run in parallel
-  for (auto& f2basic : f2_basic) {
+  for (auto& f2basic : f2_basic_) {
     f2basic.ProcessItem(item, weight);
   }
 }
 
 double F2Int::GetEstimation() const {
-  std::vector<double> estimations(f2_basic.size(), 0);
+  std::vector<double> estimations(f2_basic_.size(), 0);
   
-  for (size_t i = 0; i < f2_basic.size(); ++i) {
-    estimations[i] = f2_basic[i].GetEstimation();
+  for (size_t i = 0; i < f2_basic_.size(); ++i) {
+    estimations[i] = f2_basic_[i].GetEstimation();
   }
   return util::CalcMedian(estimations);
 }
 
 F2BasicInt::F2BasicInt(const size_t bucket_size) {
-  buckets.reserve(bucket_size);
+  buckets_.reserve(bucket_size);
   std::srand(std::time(0));
   for (size_t i = 0; i < bucket_size; ++i) {
-    random_seeds.push_back(std::rand());
+    random_seeds_.push_back(std::rand());
   }
 }
 
 void F2BasicInt::ProcessItem(const uint32_t item, const double weight) {
-  for (size_t i = 0 ; i < random_seeds.size(); ++i) {
-    int sign = (murmurhash(item, random_seeds[i]) % 2) * 2 - 1;
-    buckets[i] += sign * weight;
+  for (size_t i = 0 ; i < random_seeds_.size(); ++i) {
+    int sign = (murmurhash(item, random_seeds_[i]) % 2) * 2 - 1;
+    buckets_[i] += sign * weight;
   }
 }
 
 double F2BasicInt::GetEstimation() const {
   double tot = 0;
-  for (const auto x : buckets) {
+  for (const auto x : buckets_) {
     tot += x * x;
   }
-  return tot / buckets.size();
+  return tot / buckets_.size();
 }
 
 }  // namespace integer

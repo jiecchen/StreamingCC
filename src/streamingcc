@@ -1,0 +1,10 @@
+// Copyright 2016 Jiecao Chen
+
+// Only include this file to use StreamingCC
+
+#ifndef SRC_STREAMINGCC
+#define SRC_STREAMINGCC
+
+#include "streamingcc_include/f2.h"
+
+#endif  // SRC_STREAMINGCC
