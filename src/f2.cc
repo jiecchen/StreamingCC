@@ -5,11 +5,11 @@
 #include "streamingcc_include/util.h"
 
 #include <vector>
-#include <ctime>
 #include <cstdlib>
 
 namespace streamingcc {
 namespace integer {
+using streamingcc::util::rand_int;
 
 F2Int::F2Int(const size_t bucket_size, const size_t num_copies) {
   for (size_t i = 0; i < num_copies; ++i) {
@@ -25,19 +25,17 @@ void F2Int::ProcessItem(const uint32_t item, const double weight) {
 }
 
 double F2Int::GetEstimation() const {
-  std::vector<double> estimations(f2_basic_.size(), 0);
-  
+  std::vector<double> estimations(f2_basic_.size(), 0);  
   for (size_t i = 0; i < f2_basic_.size(); ++i) {
     estimations[i] = f2_basic_[i].GetEstimation();
   }
   return util::CalcMedian(estimations);
 }
 
-F2BasicInt::F2BasicInt(const size_t bucket_size) {
-  buckets_.reserve(bucket_size);
-  std::srand(std::time(0));
+F2BasicInt::F2BasicInt(const size_t bucket_size)
+    : buckets_(bucket_size, 0) {
   for (size_t i = 0; i < bucket_size; ++i) {
-    random_seeds_.push_back(std::rand());
+    random_seeds_.push_back(rand_int());
   }
 }
 

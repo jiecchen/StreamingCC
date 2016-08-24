@@ -11,7 +11,7 @@
 using namespace streamingcc::util;
 
 BOOST_AUTO_TEST_CASE(util_Test) {
-  std::vector<int> vec = {1, 2, 3, 4, 5, 6, 7};
+  std::vector<int> vec = {6, 2, 7, 4, 5, 1, 3};
   int median = CalcMedian(vec);
   BOOST_CHECK(median == 4);
 }

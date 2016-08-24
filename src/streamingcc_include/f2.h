@@ -37,7 +37,7 @@ class F2Int: public StreamingAlgorithmWeightedInt {
   explicit F2Int(const size_t bucket_size, const size_t num_copies = 10);
 
   // Processes an item
-  void ProcessItem(const uint32_t item, const double weight) override;
+  void ProcessItem(const uint32_t item, const double weight = 1.) override;
 
   // Gets the estimation of self-join size
   double GetEstimation() const;
