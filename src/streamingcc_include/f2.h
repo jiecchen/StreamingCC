@@ -34,6 +34,7 @@ class F2BasicInt: public StreamingAlgorithmWeightedInt {
 // num_copies of F2BasicInt.
 class F2Int: public StreamingAlgorithmWeightedInt {
  public:
+  explicit F2Int(): F2Int(100, 10) {}
   explicit F2Int(const size_t bucket_size, const size_t num_copies = 10);
 
   // Processes an item
