@@ -1,11 +1,11 @@
 // Copyright 2016 Jiecao Chen
-
 #include "streamingcc_include/f2.h"
-#include "streamingcc_include/hash.h"
-#include "streamingcc_include/util.h"
 
 #include <vector>
 #include <cstdlib>
+
+#include "streamingcc_include/hash.h"
+#include "streamingcc_include/util.h"
 
 namespace streamingcc {
 namespace integer {
@@ -25,7 +25,7 @@ void F2Int::ProcessItem(const uint32_t item, const double weight) {
 }
 
 double F2Int::GetEstimation() const {
-  std::vector<double> estimations(f2_basic_.size(), 0);  
+  std::vector<double> estimations(f2_basic_.size(), 0);
   for (size_t i = 0; i < f2_basic_.size(); ++i) {
     estimations[i] = f2_basic_[i].GetEstimation();
   }

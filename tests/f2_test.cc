@@ -33,22 +33,3 @@ BOOST_AUTO_TEST_CASE(F2Int_Test) {
   BOOST_CHECK_MESSAGE(f2_est < 10000 + 2000 && f2_est > 10000 - 2000,
                       "f2::GetEstimation = " << f2_est);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

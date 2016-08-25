@@ -30,11 +30,11 @@ class F2BasicInt: public StreamingAlgorithmWeightedInt {
 };
 
 // A aggregated version of F2 sketch for integer data stream. The
-// variance of the estimation is reduced by taking the median of 
+// variance of the estimation is reduced by taking the median of
 // num_copies of F2BasicInt.
 class F2Int: public StreamingAlgorithmWeightedInt {
  public:
-  explicit F2Int(): F2Int(100, 10) {}
+  F2Int(): F2Int(100, 10) {}
   explicit F2Int(const size_t bucket_size, const size_t num_copies = 10);
 
   // Processes an item
