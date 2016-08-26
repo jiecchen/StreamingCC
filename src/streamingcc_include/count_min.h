@@ -6,11 +6,30 @@
 #include <cstdint>
 #include <cstdlib>
 #include <memory>
+#include <cassert>
+#include <iostream>
+
 
 #include "../streamingcc_include/streaming_algorithm.h"
+#include "../streamingcc_include/util.h"
 
 namespace streamingcc {
 namespace integer {
+
+// Basic version of Count-Min sketch, without aggregation.
+class CountMinBasicInt: public StreamingAlgorithmWeightedInt {
+ public:
+  explicit CountMinBasicInt(const size_t bucket_size)
+      : seed_(streamingcc::util::rand_int()), buffer_(bucket_size, 0) {}
+  void ProcessItem(const uint32_t item, const double weight) override;
+  double GetEstimation(const uint32_t item) const;
+
+ private:
+  uint32_t seed_;
+  std::vector<uint32_t> buffer_;
+};
+
+
 
 // Count-Min sketch for weighted integer data stream.
 class CountMinInt: public StreamingAlgorithmWeightedInt {
@@ -22,9 +41,9 @@ class CountMinInt: public StreamingAlgorithmWeightedInt {
   double GetEstimation(const uint32_t item) const;
 
  private:
-  std::vector<uint32_t> random_seeds_;
-  std::vector<std::vector<uint32_t>> buffers_;
+  std::vector<CountMinBasicInt> cm_basic_;
 };
+
 
 }  // namespace integer
 }  // namespace streamingcc
