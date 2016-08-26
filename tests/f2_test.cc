@@ -6,7 +6,7 @@
 #include <random>
 #include <map>
 #include <iostream>
-
+#include <string>
 
 BOOST_AUTO_TEST_CASE(F2BasicInt_Test) {
   using streamingcc::integer::F2BasicInt;
@@ -27,6 +27,19 @@ BOOST_AUTO_TEST_CASE(F2Int_Test) {
   for (int i = 0; i < 100; ++i) {
     for (int j = 0; j < 10; ++j) {
       f2.ProcessItem(i); 
+    }
+  }
+  auto f2_est = f2.GetEstimation();
+  BOOST_CHECK_MESSAGE(f2_est < 10000 + 2000 && f2_est > 10000 - 2000,
+                      "f2::GetEstimation = " << f2_est);
+}
+
+
+BOOST_AUTO_TEST_CASE(F2_Test) {
+  streamingcc::F2<std::string> f2(50, 20);
+  for (int i = 0; i < 100; ++i) {
+    for (int j = 0; j < 10; ++j) {
+      f2.ProcessItem(std::to_string(i), 1.); 
     }
   }
   auto f2_est = f2.GetEstimation();

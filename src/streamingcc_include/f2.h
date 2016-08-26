@@ -51,6 +51,26 @@ class F2Int: public StreamingAlgorithmWeightedInt {
 
 
 }  // namespace integer
+
+template <typename T>
+class F2: public StreamingAlgorithmWeighted<T> {
+ public:
+  explicit F2(const size_t bucket_size, const size_t num_copies)
+      : f2_int_(bucket_size, num_copies) {}
+
+  void ProcessItem(const T& item, const double weight) override {
+    f2_int_.ProcessItem(hash_(item), weight);
+  }
+
+  double GetEstimation() const {
+    return f2_int_.GetEstimation();
+  }
+  
+ private:
+  std::hash<T> hash_;
+  integer::F2Int f2_int_;
+};
+
 }  // namespace streamingcc
 
 #endif  // SRC_STREAMINGCC_INCLUDE_F2_H_

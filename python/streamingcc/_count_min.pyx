@@ -8,7 +8,6 @@ cdef extern from "../../src/streamingcc_include/count_min.h" namespace "streamin
         void ProcessItem(unsigned int, double)
         double GetEstimation(unsigned int)
 
-
 cdef class PyCountMinInt:
     cdef CountMinInt count_min_int
     def __cint__(self, size_t bucket_size, size_t num_copies):
@@ -17,3 +16,4 @@ cdef class PyCountMinInt:
         self.count_min_int.ProcessItem(item, weight)
     def get_estimation(self, unsigned int item):
         return self.count_min_int.GetEstimation(item)
+    
