@@ -1,7 +1,6 @@
 language: cpp
 os:
   - linux
-  - osx
 compiler:
   - g++
   - clang
@@ -42,3 +41,29 @@ install:
 
   - sudo apt-get update -qq
   - sudo apt-get install libboost-thread-dev libboost-system-dev libboost-test-dev
+
+
+
+
+os:
+  - osx
+compiler:
+  - g++
+  - clang
+
+# Setup different environments to test
+env:
+  - CPP14=0
+  - CPP14=1
+
+script: cmake . && make && make test
+notifications:
+  email:
+    recipients:
+      - jiecchen@indiana.edu
+      - chenjiecao@gmail.com
+    on_success: change
+    on_failure: always
+
+install:
+  - brew install boost
