@@ -5,10 +5,10 @@
 #include <vector>
 #include <utility>
 
-#ifdef __clang__
-  #include <tr1/cstdint>
-#else
+#if (_LIBCPP_VERSION)
   #include <cstdint>
+#else
+  #include <tr1/cstdint>
 #endif
 
 namespace streamingcc {

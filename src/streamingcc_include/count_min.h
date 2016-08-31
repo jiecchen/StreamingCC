@@ -7,11 +7,12 @@
 #include <memory>
 #include <cassert>
 #include <iostream>
-#include <functional>
 
-#ifdef __clang__
+#if (_LIBCPP_VERSION)
   #include <tr1/cstdint>
+  #include <tr1/functional>
 #else
+  #include <functional>
   #include <cstdint>
 #endif
 

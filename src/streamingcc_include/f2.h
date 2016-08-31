@@ -7,10 +7,10 @@
 #include <cstdlib>
 #include <memory>
 
-#ifdef __clang__
-  #include <tr1/cstdint>
-#else
+#if (_LIBCPP_VERSION)
   #include <cstdint>
+#else
+  #include <tr1/cstdint>
 #endif
 
 #include "../streamingcc_include/streaming_algorithm.h"

@@ -13,14 +13,14 @@ ext_modules = [
         'streamingcc._f2',
         sources=['streamingcc/_f2.pyx'] + all_cc_files,
         include_dirs = ['../src/streamingcc_include/'],
-        extra_compile_args=['-Wno-unused-function', '-std=c++11'],
+        extra_compile_args=['-std=c++11'],
         language='c++'
     ),
     Extension(
         'streamingcc._count_min',
         sources=['streamingcc/_count_min.pyx'] + all_cc_files,
         include_dirs = ['../src/streamingcc_include/'],
-        extra_compile_args=['-Wno-unused-function', '-std=c++11'],
+        extra_compile_args=['-std=c++11'],
         language='c++'
     )
 ]
