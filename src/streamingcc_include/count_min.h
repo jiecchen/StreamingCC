@@ -3,13 +3,17 @@
 #define SRC_STREAMINGCC_INCLUDE_COUNT_MIN_H_
 
 #include <vector>
-#include <cstdint>
 #include <cstdlib>
 #include <memory>
 #include <cassert>
 #include <iostream>
 #include <functional>
 
+#ifdef __clang__
+  #include <tr1/cstdint>
+#else
+  #include <cstdint>
+#endif
 
 #include "../streamingcc_include/streaming_algorithm.h"
 #include "../streamingcc_include/util.h"

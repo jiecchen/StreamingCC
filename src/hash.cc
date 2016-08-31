@@ -3,7 +3,6 @@
 #include "streamingcc_include/hash.h"
 
 #include <cstdlib>
-#include <cstdint>
 
 namespace streamingcc {
 

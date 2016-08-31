@@ -2,7 +2,6 @@
 #include "streamingcc_include/count_min.h"
 
 #include <vector>
-#include <cstdint>
 #include <cassert>
 #include <algorithm>
 

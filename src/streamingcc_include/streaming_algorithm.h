@@ -2,9 +2,14 @@
 #ifndef SRC_STREAMINGCC_INCLUDE_STREAMING_ALGORITHM_H_
 #define SRC_STREAMINGCC_INCLUDE_STREAMING_ALGORITHM_H_
 
-#include <cstdint>
 #include <vector>
 #include <utility>
+
+#ifdef __clang__
+  #include <tr1/cstdint>
+#else
+  #include <cstdint>
+#endif
 
 namespace streamingcc {
 

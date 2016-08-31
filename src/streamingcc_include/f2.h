@@ -4,9 +4,14 @@
 #define SRC_STREAMINGCC_INCLUDE_F2_H_
 
 #include <vector>
-#include <cstdint>
 #include <cstdlib>
 #include <memory>
+
+#ifdef __clang__
+  #include <tr1/cstdint>
+#else
+  #include <cstdint>
+#endif
 
 #include "../streamingcc_include/streaming_algorithm.h"
 

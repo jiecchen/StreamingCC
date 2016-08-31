@@ -3,7 +3,11 @@
 #ifndef SRC_STREAMINGCC_INCLUDE_HASH_H_
 #define SRC_STREAMINGCC_INCLUDE_HASH_H_
 
-#include <cstdint>
+#ifdef __clang__
+  #include <tr1/cstdint>
+#else
+  #include <cstdint>
+#endif
 
 namespace streamingcc {
 
