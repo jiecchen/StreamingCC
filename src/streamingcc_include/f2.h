@@ -6,12 +6,7 @@
 #include <vector>
 #include <cstdlib>
 #include <memory>
-
-#if (_LIBCPP_VERSION)
-  #include <cstdint>
-#else
-  #include <tr1/cstdint>
-#endif
+#include <cstdint>
 
 #include "../streamingcc_include/streaming_algorithm.h"
 

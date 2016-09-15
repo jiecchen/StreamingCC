@@ -14,6 +14,9 @@ namespace util {
 // randomly return from 0, 1, 2, ..., M-1
 uint32_t rand_int(int M = 1 << 30);
 
+// randomly returns a real number from (0, M) 
+double rand_double(double M = 1.);
+
 template <class T>
 T CalcMedian(const std::vector<T>& vec_original) {
   std::vector<T> vec(vec_original.begin(), vec_original.end());

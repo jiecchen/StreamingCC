@@ -7,14 +7,9 @@
 #include <memory>
 #include <cassert>
 #include <iostream>
+#include <functional>
+#include <cstdint>
 
-#if (_LIBCPP_VERSION)
-  #include <tr1/cstdint>
-  #include <tr1/functional>
-#else
-  #include <functional>
-  #include <cstdint>
-#endif
 
 #include "../streamingcc_include/streaming_algorithm.h"
 #include "../streamingcc_include/util.h"

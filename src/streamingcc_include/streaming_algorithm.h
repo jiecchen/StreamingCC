@@ -4,12 +4,8 @@
 
 #include <vector>
 #include <utility>
+#include <cstdint>
 
-#if (_LIBCPP_VERSION)
-  #include <cstdint>
-#else
-  #include <tr1/cstdint>
-#endif
 
 namespace streamingcc {
 
@@ -21,6 +17,7 @@ namespace streamingcc {
 // TODO(jiecchen): add type checking.
 template <typename T>
 class StreamingAlgorithm {
+ public:
   // Processes an item
   virtual void ProcessItem(const T& item) = 0;
   // Processes a sequence of items
