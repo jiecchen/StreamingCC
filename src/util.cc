@@ -1,6 +1,7 @@
 // Copyright 2016 Jiecao Chen
 
 #include "streamingcc_include/util.h"
+#include <cassert>
 
 namespace streamingcc {
 namespace util {
@@ -15,6 +16,11 @@ static std::uniform_int_distribution<> dis_int(0, MAX);
 
 uint32_t rand_int(int M) {
     return dis_int(gen) % M;
+}
+
+double rand_double(double M) {
+  assert(M > 0.);
+  return dis(gen) * M;
 }
 
 }  // namespace util
