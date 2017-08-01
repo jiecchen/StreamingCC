@@ -6,5 +6,7 @@
 #define SRC_STREAMINGCC
 
 #include "streamingcc_include/f2.h"
+#include "streamingcc_include/count_min.h"
+#include "streamingcc_include/sampling.h"
 
 #endif  // SRC_STREAMINGCC

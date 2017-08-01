@@ -8,7 +8,7 @@ A C++ template library for summarizing data streams.
 ## Algorithms
 `StreamingCC` implements various [streaming algorithms](https://en.wikipedia.org/wiki/Streaming_algorithm) and [probabilistic data structures](https://en.wikipedia.org/wiki/Category:Probabilistic_data_structures). They can be used to effectively summarize the data stream even when data is too large to fit into memory.
 
-Algorithms/Data Structures included in `StreamingCC`:
+Algorithms/Data Structures (will be) included in `StreamingCC`:
 + [Count-Min Sketch](https://en.wikipedia.org/wiki/Count%E2%80%93min_sketch)
 + [Count-Sketch](https://www.cs.rutgers.edu/~farach/pubs/FrequentStream.pdf)
 + [AMS Sketch](https://polylogblog.wordpress.com/2009/09/27/bite-sized-stream-ams-sketching/)
@@ -21,20 +21,64 @@ Algorithms/Data Structures included in `StreamingCC`:
 
 
 
-
-
-## Documentation
-+ See [StreamingCC](http://xmerge.me/StreamingCC/) to get started.
-+ See [API Docs](http://xmerge.me/StreamingCC-api) to dive straight into API.
-
 ## Dependencies
 + CMake (>= 2.8.7)
 + C++11 support required
 + [Armadillo](http://arma.sourceforge.net/) (optional, required by some features)
 
 ## How to Compile
-The source code compiles to static library
-See [xmerge.me/StreamingCC](http://xmerge.me/StreamingCC/) for details.
+The source code compiles to static library.
+
+Step 1, clone to local machine
+
+   $ git clone https://github.com/jiecchen/StreamingCC.git
+
+Step 2, compile the library
+
+   $ cd StreamingCC/
+   $ cmake .
+   $ make
+
+Step 3, install the library to system
+
+   $ sudo make install
+
+## Example
+Suppose you have `sampling.cc` with the following code,
+``` c++
+#include <streamingcc>
+#include <iostream>
+using namespace streamingcc;
+
+int main() {
+    // create an object which will maintain
+    // 10 samples (with replacement) dynamically
+    ReservoirSampler<int> rsmp(10);
+    // sample from a data stream with length 1,000,000
+    for (int i = 0; i < 1000000; i++)
+        rsmp.ProcessItem(i);
+
+    // print the samples
+    for (auto sample: rsmp.GetSamples())
+        std::cout << sample << " ";
+    std::cout << std::endl;
+    return 0;
+}
+```
+
+Now compile the code:
+
+   $ g++ -std=c++11 -O3 -o sampling sampling.cc -lstreamingcc
+
+It will generate an executable file `sampling`. Run the binary with
+
+   $ ./sampling
+   916749 93283 843814 534073 877348 445467 369729 163394 67058 212209 
+
+## TODO
+- Add more docs
+- Add more python wrappers
+- Add more examples
 
 ## Credit
 
