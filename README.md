@@ -31,17 +31,17 @@ The source code compiles to static library.
 
 Step 1, clone to local machine
 
-   $ git clone https://github.com/jiecchen/StreamingCC.git
+    $ git clone https://github.com/jiecchen/StreamingCC.git
 
 Step 2, compile the library
 
-   $ cd StreamingCC/
-   $ cmake .
-   $ make
+    $ cd StreamingCC/
+    $ cmake .
+    $ make
 
 Step 3, install the library to system
 
-   $ sudo make install
+    $ sudo make install
 
 ## Example
 Suppose you have `sampling.cc` with the following code,
@@ -68,12 +68,12 @@ int main() {
 
 Now compile the code:
 
-   $ g++ -std=c++11 -O3 -o sampling sampling.cc -lstreamingcc
+    $ g++ -std=c++11 -O3 -o sampling sampling.cc -lstreamingcc
 
 It will generate an executable file `sampling`. Run the binary with
 
-   $ ./sampling
-   916749 93283 843814 534073 877348 445467 369729 163394 67058 212209 
+    $ ./sampling
+    916749 93283 843814 534073 877348 445467 369729 163394 67058 212209 
 
 ## TODO
 - Add more docs
