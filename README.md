@@ -1,6 +1,6 @@
 StreamingCC
 ----------------------
-A C++ template library for summarizing data streams.
+A C++ library for summarizing data (data streams, in particular).
 
 [![TravisCI](https://travis-ci.org/jiecchen/StreamingCC.svg?branch=master)](https://travis-ci.org/jiecchen/StreamingCC)
 [![DUB](https://img.shields.io/dub/l/vibe-d.svg)]()
@@ -74,6 +74,11 @@ It will generate an executable file `sampling`. Run the binary with
 
     $ ./sampling
     916749 93283 843814 534073 877348 445467 369729 163394 67058 212209 
+
+## Recently Included
+- library to sample from noisy data, see [readme](https://github.com/jiecchen/StreamingCC/blob/master/src/robust_l0_sampling/README.md) for more information.
+- library for construct coreset for a dataset so that one can do clustering with outliers, see [readme](https://github.com/jiecchen/StreamingCC/blob/master/src/dist_clustering/README.md) for more information.
+- library for embedding that preserve edit distance, see [readme](https://github.com/jiecchen/StreamingCC/blob/master/src/embed_join/readme.txt) for details.
 
 ## TODO
 - Add more docs
