@@ -1,14 +1,11 @@
-# dist-clustering-outlier
-bin/make
-make local
-make
-pretty_tsv.sh
-runscript.sh
+# Clustering and Data Summarization
+This library includes multiple [algorithms](https://github.com/jiecchen/StreamingCC/tree/master/src/dist_clustering/algorithms),
+- k-means
+- k-means++, see [kmean_plus_plus](https://github.com/jiecchen/StreamingCC/blob/master/src/dist_clustering/algorithms/kmean_plus_plus.h) for example.
+- k-means--, see [kmeans_minus_minus_test](https://github.com/jiecchen/StreamingCC/blob/master/src/dist_clustering/tests/kmean_minus_minus_test.cc) for example.
+- coreset construction for clustering with outliers. See [succ_sampling_test](https://github.com/jiecchen/StreamingCC/blob/master/src/dist_clustering/tests/succ_sampling_test.cc) for example.
 
--d datasetName
--o n_outliers
--c n_centers
--v :verbose on
+## TODO
 
-
-mpirun -np 1 ./main -d 16points -c 3 -o 3 -v 2>INFO.txt
+- Clean up the code and add docs.
+- Remove unnecessary dependency. 
