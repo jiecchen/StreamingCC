@@ -84,6 +84,7 @@ It will generate an executable file `sampling`. Run the binary with
 - Add more docs
 - Add more python wrappers
 - Add more examples
+- Unify the interface for recently added library
 
 ## Credit
 
@@ -92,6 +93,6 @@ It will generate an executable file `sampling`. Run the binary with
 
 ### Other contributor(s)
 - Qin Zhang <qzhangcs@indiana.edu>
-
+- Haoyu Zhang <hz30@indiana.edu>
 ## License
 MIT License
