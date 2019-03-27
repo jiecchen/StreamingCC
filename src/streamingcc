@@ -9,5 +9,6 @@
 #include "streamingcc_include/count_min.h"
 #include "streamingcc_include/sampling.h"
 #include "streamingcc_include/bloom_filter.h"
+#include "streamingcc_include/hyper_loglog.h"
 
 #endif  // SRC_STREAMINGCC

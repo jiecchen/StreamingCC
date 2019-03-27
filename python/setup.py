@@ -22,6 +22,20 @@ ext_modules = [
         include_dirs = ['../src/streamingcc_include/'],
         extra_compile_args=['-std=c++11'],
         language='c++'
+    ),
+    Extension(
+        'streamingcc._bloom_filter',
+        sources=['streamingcc/_bloom_filter.pyx'] + all_cc_files,
+        include_dirs = ['../src/streamingcc_include/'],
+        extra_compile_args=['-std=c++11'],
+        language='c++'
+    ),    
+    Extension(
+        'streamingcc._hyper_loglog',
+        sources=['streamingcc/_hyper_loglog.pyx'] + all_cc_files,
+        include_dirs = ['../src/streamingcc_include/'],
+        extra_compile_args=['-std=c++11'],
+        language='c++'
     )
 ]
 
